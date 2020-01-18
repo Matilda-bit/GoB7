@@ -1,8 +1,8 @@
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation-stack';
+import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 
-
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryEatScreen from '../screens/CategoryEatScreen';
