@@ -3,9 +3,13 @@ import {
     FlatList,
     StyleSheet
 } from 'react-native';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+
 
 import { CATEGORIES } from '../data/dummy-data';
+import HeaderButton from '../components/HeaderButton';
 import CategoryGridTile from '../components/CategoryGridTile';
+
 
 const CategoriesScreen = props => {
     //console.log(props);
@@ -37,7 +41,10 @@ const CategoriesScreen = props => {
 };
 //add some prop(JS obj) for my CategoriesScreen (header)
 CategoriesScreen.navigationOptions = {
-    headerTitle: 'Categories'
+    headerTitle: 'Categories',
+    headerLeft: <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item title="Menu" iconName='ios-menu' onPress={() => {}} />
+    </HeaderButtons>
 };
 
 const styles = StyleSheet.create({
