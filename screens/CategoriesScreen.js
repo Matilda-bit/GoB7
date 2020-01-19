@@ -4,10 +4,10 @@ import {
     StyleSheet
 } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
-
+import HeaderButton from '../components/HeaderButton';
 
 import { CATEGORIES } from '../data/dummy-data';
-import HeaderButton from '../components/HeaderButton';
+
 import CategoryGridTile from '../components/CategoryGridTile';
 
 
@@ -40,11 +40,16 @@ const CategoriesScreen = props => {
     );
 };
 //add some prop(JS obj) for my CategoriesScreen (header)
-CategoriesScreen.navigationOptions = {
-    headerTitle: 'Categories',
-    headerLeft: <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item title="Menu" iconName='ios-menu' onPress={() => {}} />
-    </HeaderButtons>
+CategoriesScreen.navigationOptions = (navData) =>{
+        return {
+            headerTitle: 'Categories',
+            headerLeft: 
+                <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                    <Item title="Menu" iconName='ios-menu' onPress={() => {
+                        navData.navigation.toggleDrawer();
+                    }} />
+                </HeaderButtons>
+        };
 };
 
 const styles = StyleSheet.create({
