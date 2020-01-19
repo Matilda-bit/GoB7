@@ -1,18 +1,13 @@
 import React from 'react';
-import { 
-    View, 
-    Text,
-    StyleSheet, 
-} from 'react-native';
 
+import PlaceList from '../components/PlaceList';
+import { PLACE } from '../data/dummy-data';
+import Place from '../models/place';
 
 
 const FavoritesScreen = props => {
-   return (
-        <View style = {styles.screen}>
-            <Text>The Favorites Screen!</Text>
-        </View>
-    );
+    const favPlaces = PLACE.filter(place => place.id === 'p1' || place.id === 'p2');
+   return <PlaceList listData={favPlaces} navigation={props.navigation} />;
 };
 
 FavoritesScreen.navigationOptions ={
@@ -20,12 +15,12 @@ FavoritesScreen.navigationOptions ={
 };
 
 
-const styles= StyleSheet.create ({
-   screen: {
-       flex: 1,
-       justifyContent: 'center',
-       alignItems: 'center'
-   } 
-});
+// const styles= StyleSheet.create ({
+//    screen: {
+//        flex: 1,
+//        justifyContent: 'center',
+//        alignItems: 'center'
+//    } 
+// });
 
 export default FavoritesScreen;
