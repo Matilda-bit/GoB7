@@ -1,8 +1,11 @@
+import React from 'react'
 import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
 
-import { createBottomTabNavigator } from 'react-navigation-tabs'
+import { createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+
+import { Ionicons } from '@expo/vector-icons';
 
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryEatScreen from '../screens/CategoryEatScreen';
@@ -26,12 +29,25 @@ const PlacesNavigator = createStackNavigator({
         headerStyle: {
             backgroundColor: Platform.OS === 'android' ? Colors.wisteria : ''
         },
-        headerTintColor: Platform.OS === 'android' ? 'white' : Colors.wisteria
+        headerTintColor: Platform.OS === 'android' ? 'white' : Colors.wisteria,
+        headerTitle: 'A Screen'
     }
 });
 const PlaceFavTabNavigator = createBottomTabNavigator({
-    Place:  PlacesNavigator,
-    Favorites: FavoritesScreen
+    Place: { screen:  PlacesNavigator, navigationOptions: {
+        tabBarIcon: (tabInfo) => {
+            return <Ionicons name='ios-restaurant' size={25} color={tabInfo.activeTintColor}/>
+        }
+    }},
+    Favorites: {screen: FavoritesScreen, navigationOptions: {
+        tabBarIcon: (tabInfo) => {
+            return <Ionicons name='ios-star' size={25} color={tabInfo.activeTintColor}/>
+        }
+    }}
+}, {
+    tabBarOptions: {
+        activeTintColor: Colors.accent
+    }
 }
 );
 export default createAppContainer(PlaceFavTabNavigator);
