@@ -6,6 +6,7 @@ import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import { Ionicons } from '@expo/vector-icons';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryEatScreen from '../screens/CategoryEatScreen';
@@ -33,18 +34,33 @@ const PlacesNavigator = createStackNavigator({
         headerTitle: 'A Screen'
     }
 });
-const PlaceFavTabNavigator = createBottomTabNavigator({
-    Place: { screen:  PlacesNavigator, navigationOptions: {
-        tabBarIcon: (tabInfo) => {
-            return <Ionicons name='ios-restaurant' size={25} color={tabInfo.activeTintColor}/>
+
+const tabScreenConfig = {
+    Place: { 
+        screen:  PlacesNavigator, 
+        navigationOptions: {
+            tabBarIcon: (tabInfo) => {
+              return <Ionicons name='ios-restaurant' size={25} color={tabInfo.tintColor}/>
         }
     }},
-    Favorites: {screen: FavoritesScreen, navigationOptions: {
-        tabBarIcon: (tabInfo) => {
-            return <Ionicons name='ios-star' size={25} color={tabInfo.activeTintColor}/>
+    Favorites: {
+        screen: FavoritesScreen, 
+        navigationOptions: {
+            tabBarLabel: 'Favorite places!',
+            tabBarIcon: (tabInfo) => {
+                return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor}/>
         }
     }}
-}, {
+};
+
+const PlaceFavTabNavigator =Platform.OS === 'android' 
+? createBottomTabNavigator( tabScreenConfig, {
+    tabBarOptions: {
+        activeTintColor: Colors.accent,
+        shifting: true
+    }
+}) 
+: createBottomTabNavigator( tabScreenConfig, {
     tabBarOptions: {
         activeTintColor: Colors.accent
     }
