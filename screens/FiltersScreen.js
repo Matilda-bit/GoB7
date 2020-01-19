@@ -9,6 +9,18 @@ const FiltersScreen = props => {
     );
 };
 
+FiltersScreen.navigationOptions = (navData) =>{
+    return {
+        headerTitle: 'Filter Places',
+        headerLeft: 
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <Item title="Menu" iconName='ios-menu' onPress={() => {
+                    navData.navigation.toggleDrawer();
+                }} />
+            </HeaderButtons>
+    };
+};
+
 FiltersScreen.navigationOptions = {
     headerTitle: 'Filter Places'
 };
