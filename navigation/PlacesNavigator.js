@@ -4,15 +4,15 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import { Ionicons } from '@expo/vector-icons';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryEatScreen from '../screens/CategoryEatScreen';
 import PlaceDetailScreen from '../screens/PlaceDetailScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
-
+import FiltersScreen from '../screens/FiltersScreen';
 import Colors from '../constants/Colors';
 
 const defaultStackNavOptions = {
@@ -86,6 +86,16 @@ const PlaceFavTabNavigator = Platform.OS === 'android'
     tabBarOptions: {
         activeTintColor: Colors.accent
     }
-}
-);
-export default createAppContainer(PlaceFavTabNavigator);
+});
+
+const FilterNavigator = createStackNavigator({
+Filters: FiltersScreen
+
+});
+
+const MainNavigator = createDrawerNavigator({
+    MyFavs: PlaceFavTabNavigator,
+    Filters: FilterNavigator
+});
+
+export default createAppContainer(MainNavigator);
