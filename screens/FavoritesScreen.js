@@ -4,7 +4,7 @@ import PlaceList from '../components/PlaceList';
 import { PLACE } from '../data/dummy-data';
 
 
-import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/HeaderButton';
 
 
@@ -15,7 +15,7 @@ const FavoritesScreen = props => {
 
 FavoritesScreen.navigationOptions = (navData) =>{
     return {
-        headerTitle: 'Yuor Favorites',
+        headerTitle: 'Your Favorites',
         headerLeft: 
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item title="Menu" iconName='ios-menu' onPress={() => {
