@@ -88,14 +88,34 @@ const PlaceFavTabNavigator = Platform.OS === 'android'
     }
 });
 
-const FilterNavigator = createStackNavigator({
-Filters: FiltersScreen
-
-});
+const FilterNavigator = createStackNavigator(
+    {
+        Filters: FiltersScreen
+    },{
+        // navigationOptions: {
+        //     drawerLabel: 'Filters!!!'
+        // },
+        defaultNavigationOptions: defaultStackNavOptions
+        }
+);
 
 const MainNavigator = createDrawerNavigator({
-    MyFavs: PlaceFavTabNavigator,
+    MyFavs: {
+        screen: PlaceFavTabNavigator, 
+        navigationOptions: {
+            drawerLabel: "Place"
+        }
+    },
     Filters: FilterNavigator
-});
+    },
+    {
+        contentOptions: {
+            activeTintColor: Colors.accentColor,
+            labelStyle: {
+                fontFamily: 'open-sans-bold'
+            }
+        }
+    }
+    );
 
 export default createAppContainer(MainNavigator);
