@@ -2,13 +2,13 @@ import React, { useState }  from 'react';
 import { StyleSheet, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import { useScreens } from 'react-native-screens';
+import {  enableScreens } from 'react-native-screens';
 
 import Header from './components/Header';
 import PlacesNavigator from './navigation/PlacesNavigator';
 
 
-useScreens();
+enableScreens();
 
 const fetchFonts = () => {
   return Font.loadAsync({
