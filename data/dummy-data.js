@@ -123,7 +123,7 @@ export const PLACE = [
         'p14',
         ['c8'],
         'green',
-        'http://www.tmir.org.il/download/pictures/where-pachim.jpg',
+        'http://www.dolav.co.il/media/1427490/wc_240_main_green.jpg',
         '31.252254, 34.790706',
         '' 
     ),
