@@ -13,6 +13,8 @@ import CategoryEatScreen from '../screens/CategoryEatScreen';
 import PlaceDetailScreen from '../screens/PlaceDetailScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import FiltersScreen from '../screens/FiltersScreen';
+import MapScreen from '../screens/MapScreen';
+
 import Colors from '../constants/Colors';
 
 const defaultStackNavOptions = {
@@ -41,7 +43,8 @@ const PlacesNavigator = createStackNavigator({
 
 const FavNavigator = createStackNavigator(
     {
-    Favorites: FavoritesScreen,
+    //Favorites: FavoritesScreen,
+    Location: MapScreen,
     PlaceDetail: PlaceDetailScreen
     }, 
     {
@@ -55,21 +58,32 @@ const tabScreenConfig = {
     Place: { 
         screen:  PlacesNavigator, 
         navigationOptions: {
+            tabBarLabel: 'List',
             tabBarIcon: (tabInfo) => {
-              return <Ionicons name='ios-restaurant' size={25} color={tabInfo.tintColor}/>
+              return <Ionicons name='ios-list' size={25} color={tabInfo.tintColor}/>
         },
         tabBarColor: Colors.c1
 
     }},
-    Favorites: {
+    // Favorites: {
+    //     screen: FavNavigator, 
+    //     navigationOptions: {
+    //         tabBarLabel: 'Favorite places!',
+    //         tabBarIcon: (tabInfo) => {
+    //             return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor}/>
+    //     },
+    //     tabBarColor: Colors.c1
+    // }},
+    Location: {
         screen: FavNavigator, 
         navigationOptions: {
-            tabBarLabel: 'Favorite places!',
+            tabBarLabel: 'Maps',
             tabBarIcon: (tabInfo) => {
-                return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor}/>
+                return <Ionicons name='md-map' size={25} color={tabInfo.tintColor}/>
         },
         tabBarColor: Colors.c1
     }}
+
 };
 
 const PlaceFavTabNavigator = Platform.OS === 'android' 
@@ -98,12 +112,29 @@ const FilterNavigator = createStackNavigator(
         defaultNavigationOptions: defaultStackNavOptions
         }
 );
+const PlaceMapTabNavigator = Platform.OS === 'android' 
+? createBottomTabNavigator( tabScreenConfig, {
+    tabBarOptions: {
+        activeTintColor: Colors.accentColor,
+        shifting: true,
+        barStyle: {
+            backgroundColor: Colors.primaryColor
+        }
+    }
+}) 
+: createBottomTabNavigator( tabScreenConfig, {
+    tabBarOptions: {
+        activeTintColor: Colors.accent
+    }
+});
+
+
 
 const MainNavigator = createDrawerNavigator({
     MyFavs: {
-        screen: PlaceFavTabNavigator, 
+        screen: PlaceMapTabNavigator, 
         navigationOptions: {
-            drawerLabel: "Place"
+            drawerLabel: "List"
         }
     },
     Filters: FilterNavigator
