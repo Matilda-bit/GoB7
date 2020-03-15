@@ -12,6 +12,7 @@ import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryEatScreen from '../screens/CategoryEatScreen';
 import PlaceDetailScreen from '../screens/PlaceDetailScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
+//filter screen 134
 import FiltersScreen from '../screens/FiltersScreen';
 import MapScreen from '../screens/MapScreen';
 
@@ -26,7 +27,7 @@ const defaultStackNavOptions = {
 
 };
 
-
+//ListNavigator
 const PlacesNavigator = createStackNavigator({
 
     Categories: {
@@ -43,7 +44,18 @@ const PlacesNavigator = createStackNavigator({
 
 const FavNavigator = createStackNavigator(
     {
-    //Favorites: FavoritesScreen,
+    Favorites: FavoritesScreen,
+    //Location: MapScreen,
+    MyDetail: PlaceDetailScreen
+    }, 
+    {
+    defaultNavigationOptions: defaultStackNavOptions
+    }
+
+);
+
+const MapNavigator = createStackNavigator(
+    {
     Location: MapScreen,
     PlaceDetail: PlaceDetailScreen
     }, 
@@ -55,6 +67,7 @@ const FavNavigator = createStackNavigator(
 
 
 const tabScreenConfig = {
+    //add left icon in my tab - "list"
     Place: { 
         screen:  PlacesNavigator, 
         navigationOptions: {
@@ -65,17 +78,18 @@ const tabScreenConfig = {
         tabBarColor: Colors.c1
 
     }},
-    // Favorites: {
-    //     screen: FavNavigator, 
-    //     navigationOptions: {
-    //         tabBarLabel: 'Favorite places!',
-    //         tabBarIcon: (tabInfo) => {
-    //             return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor}/>
-    //     },
-    //     tabBarColor: Colors.c1
-    // }},
-    Location: {
+    Favorites: {
         screen: FavNavigator, 
+        navigationOptions: {
+            tabBarLabel: 'favorite places',
+            tabBarIcon: (tabInfo) => {
+                return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor}/>
+        },
+        tabBarColor: Colors.c1
+    }},
+    //maps
+    Location: {
+        screen: MapNavigator, 
         navigationOptions: {
             tabBarLabel: 'Maps',
             tabBarIcon: (tabInfo) => {
@@ -102,16 +116,6 @@ const PlaceFavTabNavigator = Platform.OS === 'android'
     }
 });
 
-const FilterNavigator = createStackNavigator(
-    {
-        Filters: FiltersScreen
-    },{
-        // navigationOptions: {
-        //     drawerLabel: 'Filters!!!'
-        // },
-        defaultNavigationOptions: defaultStackNavOptions
-        }
-);
 const PlaceMapTabNavigator = Platform.OS === 'android' 
 ? createBottomTabNavigator( tabScreenConfig, {
     tabBarOptions: {
@@ -128,8 +132,18 @@ const PlaceMapTabNavigator = Platform.OS === 'android'
     }
 });
 
-
-
+//134
+const FilterNavigator = createStackNavigator(
+    {
+        Filters: FiltersScreen
+    },{
+        // navigationOptions: {
+        //     drawerLabel: 'Filters!!!'
+        // },
+        defaultNavigationOptions: defaultStackNavOptions
+        }
+);
+//my nav list in burger menu
 const MainNavigator = createDrawerNavigator({
     MyFavs: {
         screen: PlaceMapTabNavigator, 
@@ -139,6 +153,7 @@ const MainNavigator = createDrawerNavigator({
     },
     Filters: FilterNavigator
     },
+    //my styles for text into burger
     {
         contentOptions: {
             activeTintColor: Colors.accentColor,
