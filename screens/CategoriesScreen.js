@@ -3,11 +3,11 @@ import {
     FlatList,
     StyleSheet
 } from 'react-native';
-import { HeaderButtons, Item } from 'react-navigation-header-buttons'
-import HeaderButton from '../components/HeaderButton';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import { CATEGORIES } from '../data/dummy-data';
 
+import HeaderButton from '../components/HeaderButton';
 import CategoryGridTile from '../components/CategoryGridTile';
 
 
@@ -43,6 +43,8 @@ const CategoriesScreen = props => {
 CategoriesScreen.navigationOptions = (navData) =>{
         return {
             headerTitle: 'Categories',
+            //134
+            //burger menu
             headerLeft: 
                 <HeaderButtons HeaderButtonComponent={HeaderButton}>
                     <Item title="Menu" iconName='ios-menu' onPress={() => {
