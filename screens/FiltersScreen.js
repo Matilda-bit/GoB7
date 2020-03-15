@@ -17,18 +17,8 @@ const FiltersScreen = props => {
     );
 };
 
-// FiltersScreen.navigationOptions = (navData) =>{
-//     return {
-//         headerTitle: 'Filter Places',
-//         //burger menu
-//         headerLeft: 
-//             <HeaderButtons HeaderButtonComponent={HeaderButton}>
-//                 <Item title="Menu" iconName='ios-menu' onPress={() => {
-//                     navData.navigation.toggleDrawer();
-//                 }} />
-//             </HeaderButtons>
-//     };
-// };
+//134
+
 FiltersScreen.navigationOptions = (navData) =>{
     return {
         headerTitle: 'Filter Places',
@@ -41,10 +31,7 @@ FiltersScreen.navigationOptions = (navData) =>{
             </HeaderButtons>
    };
 };
-//134
-// FiltersScreen.navigationOptions = {
-//     headerTitle: 'Filter Places'
-// };
+
 
 const styles = StyleSheet.create({
 screen:{

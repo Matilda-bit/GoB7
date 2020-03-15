@@ -13,7 +13,7 @@ const FavoritesScreen = props => {
    return <PlaceList listData={favPlaces} navigation={props.navigation} />;
 };
 
-FavoritesScreen.navigationOptions = (navData) =>{
+FavoritesScreen.navigationOptions = navData =>{
     return {
         headerTitle: 'Your Favorites',
         headerLeft: 
@@ -24,11 +24,6 @@ FavoritesScreen.navigationOptions = (navData) =>{
             </HeaderButtons>
     };
 };
-
-FavoritesScreen.navigationOptions ={
-    headerTitle: 'Your Favotites'
-};
-
 
 // const styles= StyleSheet.create ({
 //    screen: {
