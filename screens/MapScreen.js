@@ -4,11 +4,11 @@ import {
     StyleSheet,
     Text, 
 } from 'react-native';
-
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import HeaderButton from '../components/HeaderButton';
 
-import { MapView, Permissions } from 'expo';
+//import { MapView, Permissions } from 'expo';
+
+import HeaderButton from '../components/HeaderButton';
 
 
 const MapScreen = props => {
@@ -17,28 +17,38 @@ const MapScreen = props => {
         <View>
             <Text>Maps</Text>
         
-            <View style={styles}>
+            <View style={styles.screen}>
                
             </View>
         </View>  
     );
 };
 
-MapScreen.navigationOption = (navData) =>{
+// MapScreen.navigationOption = (navData) =>{
+//     return {
+//         headerTitle: 'Maps',
+//         headerLeft: 
+//             <HeaderButtons HeaderButtonComponent={HeaderButton}>
+//                 <Item title="Menu" iconName='ios-menu' onPress={() => {
+//                     navData.navigation.toggleDrawer();
+//                 }} />
+//             </HeaderButtons>
+//     };
+
+// };
+
+MapScreen.navigationOptions = (navData) =>{
     return {
-        headerTitle: 'Maps',
-        headerLeft: 
-            <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                <Item title="Menu" iconName='ios-menu' onPress={() => {
-                    navData.navigation.toggleDrawer();
-                }} />
-            </HeaderButtons>
+    headerTitle: 'Maps',
+    //134
+    //burger menu
+    headerLeft: 
+        <HeaderButtons HeaderButtonComponent={HeaderButton}>
+            <Item title="Menu" iconName='ios-menu' onPress={() => {
+                navData.navigation.toggleDrawer();
+            }} />
+        </HeaderButtons>
     };
-
-}
-
-MapScreen.navigationOptions ={
-    headerTitle: 'Maps'
 };
 
 const styles= StyleSheet.create ({
