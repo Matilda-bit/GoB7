@@ -1,5 +1,5 @@
 import React from 'react'
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import { createAppContainer } from 'react-navigation';
@@ -21,6 +21,13 @@ import Colors from '../constants/Colors';
 const defaultStackNavOptions = {
     headerStyle: {
         backgroundColor: Platform.OS === 'android' ? Colors.wisteria : ''
+    },
+    headerTitleStyle: {
+        fontFamily: 'open-sans-lato'
+    },
+    //for ios
+    headerBackTitleStyle: {
+        fontFamily: 'open-sans-bold'
     },
     headerTintColor: Platform.OS === 'android' ? 'white' : Colors.wisteria,
     headerTitle: 'A Screen'
@@ -67,7 +74,7 @@ const MapNavigator = createStackNavigator(
 
 
 const tabScreenConfig = {
-    //add left icon in my tab - "list"
+    //add left icon in my tab - list/fav/map
     Place: { 
         screen:  PlacesNavigator, 
         navigationOptions: {
@@ -75,7 +82,9 @@ const tabScreenConfig = {
             tabBarIcon: (tabInfo) => {
               return <Ionicons name='ios-list' size={25} color={tabInfo.tintColor}/>
         },
-        tabBarColor: Colors.c1
+        tabBarColor: Colors.c1,
+        //for android style
+        tabBarLabel: Platform.OS === 'android' ? <Text style={{fontFamily: 'open-sans-lato'}}>List</Text>:'List'
 
     }},
     Favorites: {
@@ -85,7 +94,9 @@ const tabScreenConfig = {
             tabBarIcon: (tabInfo) => {
                 return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor}/>
         },
-        tabBarColor: Colors.c1
+        tabBarColor: Colors.c1,
+        //for android style
+        tabBarLabel: Platform.OS === 'android' ? <Text style={{fontFamily: 'open-sans-lato'}}>favorite places</Text> : 'favorite places'
     }},
     //maps
     Location: {
@@ -95,7 +106,9 @@ const tabScreenConfig = {
             tabBarIcon: (tabInfo) => {
                 return <Ionicons name='md-map' size={25} color={tabInfo.tintColor}/>
         },
-        tabBarColor: Colors.c1
+        tabBarColor: Colors.c1,
+        //for android style
+        tabBarLabel: Platform.OS === 'android' ? <Text style={{fontFamily: 'open-sans-lato'}}>Maps</Text>:'Maps'
     }}
 
 };
@@ -103,6 +116,7 @@ const tabScreenConfig = {
 const PlaceFavTabNavigator = Platform.OS === 'android' 
 ? createBottomTabNavigator( tabScreenConfig, {
     tabBarOptions: {
+        //activeTintColor: 'white',
         activeTintColor: Colors.accentColor,
         shifting: true,
         barStyle: {
@@ -112,43 +126,47 @@ const PlaceFavTabNavigator = Platform.OS === 'android'
 }) 
 : createBottomTabNavigator( tabScreenConfig, {
     tabBarOptions: {
+        labelStyle: {
+            fontFamily: 'open-sans-lato'
+        },
         activeTintColor: Colors.accent
     }
 });
 
-const PlaceMapTabNavigator = Platform.OS === 'android' 
-? createBottomTabNavigator( tabScreenConfig, {
-    tabBarOptions: {
-        activeTintColor: Colors.accentColor,
-        shifting: true,
-        barStyle: {
-            backgroundColor: Colors.primaryColor
-        }
-    }
-}) 
-: createBottomTabNavigator( tabScreenConfig, {
-    tabBarOptions: {
-        activeTintColor: Colors.accent
-    }
-});
+// const PlaceMapTabNavigator = Platform.OS === 'android' 
+// ? createBottomTabNavigator( tabScreenConfig, {
+//     tabBarOptions: {
+//         activeTintColor: Colors.accentColor,
+//         shifting: true,
+//         barStyle: {
+//             backgroundColor: Colors.primaryColor
+//         }
+//     }
+// }) 
+// : createBottomTabNavigator( tabScreenConfig, {
+//     tabBarOptions: {
+//         activeTintColor: Colors.accent
+//     }
+// });
 
 //134
 const FilterNavigator = createStackNavigator(
     {
         Filters: FiltersScreen
-    },{
-        // navigationOptions: {
-        //     drawerLabel: 'Filters!!!'
-        // },
+    },
+    {
+        navigationOptions: {
+            drawerLabel: "Filters!"
+        },
         defaultNavigationOptions: defaultStackNavOptions
-        }
+    }
 );
 //my nav list in burger menu
 const MainNavigator = createDrawerNavigator({
     MyFavs: {
-        screen: PlaceMapTabNavigator, 
+        screen: PlaceFavTabNavigator, 
         navigationOptions: {
-            drawerLabel: "List"
+            drawerLabel: "Catalog"
         }
     },
     Filters: FilterNavigator
