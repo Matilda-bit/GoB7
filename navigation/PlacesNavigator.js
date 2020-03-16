@@ -1,5 +1,5 @@
 import React from 'react'
-import { Platform, Text } from 'react-native';
+import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import { createAppContainer } from 'react-navigation';
@@ -15,9 +15,10 @@ import FavoritesScreen from '../screens/FavoritesScreen';
 //filter screen 134
 import FiltersScreen from '../screens/FiltersScreen';
 import MapScreen from '../screens/MapScreen';
-
+import BodyText from '../components/BodyText';
 import Colors from '../constants/Colors';
 
+//header style
 const defaultStackNavOptions = {
     headerStyle: {
         backgroundColor: Platform.OS === 'android' ? Colors.wisteria : ''
@@ -27,7 +28,7 @@ const defaultStackNavOptions = {
     },
     //for ios
     headerBackTitleStyle: {
-        fontFamily: 'open-sans-bold'
+        fontFamily: 'open-sans-regular'
     },
     headerTintColor: Platform.OS === 'android' ? 'white' : Colors.wisteria,
     headerTitle: 'A Screen'
@@ -74,7 +75,7 @@ const MapNavigator = createStackNavigator(
 
 
 const tabScreenConfig = {
-    //add left icon in my tab - list/fav/map
+    //add iconы in my tab - list/fav/map
     Place: { 
         screen:  PlacesNavigator, 
         navigationOptions: {
@@ -84,7 +85,7 @@ const tabScreenConfig = {
         },
         tabBarColor: Colors.c1,
         //for android style
-        tabBarLabel: Platform.OS === 'android' ? <Text style={{fontFamily: 'open-sans-lato'}}>List</Text>:'List'
+        tabBarLabel: Platform.OS === 'android' ? <BodyText style={{textAlign: 'center'}}>List</BodyText>:'List'
 
     }},
     Favorites: {
@@ -96,7 +97,7 @@ const tabScreenConfig = {
         },
         tabBarColor: Colors.c1,
         //for android style
-        tabBarLabel: Platform.OS === 'android' ? <Text style={{fontFamily: 'open-sans-lato'}}>favorite places</Text> : 'favorite places'
+        tabBarLabel: Platform.OS === 'android' ? <BodyText style={{textAlign: 'center'}}>favorite places</BodyText> : 'favorite places'
     }},
     //maps
     Location: {
@@ -108,7 +109,7 @@ const tabScreenConfig = {
         },
         tabBarColor: Colors.c1,
         //for android style
-        tabBarLabel: Platform.OS === 'android' ? <Text style={{fontFamily: 'open-sans-lato'}}>Maps</Text>:'Maps'
+        tabBarLabel: Platform.OS === 'android' ? <BodyText style={{textAlign: 'center'}}>Maps</BodyText>:'Maps'
     }}
 
 };
@@ -132,22 +133,6 @@ const PlaceFavTabNavigator = Platform.OS === 'android'
         activeTintColor: Colors.accent
     }
 });
-
-// const PlaceMapTabNavigator = Platform.OS === 'android' 
-// ? createBottomTabNavigator( tabScreenConfig, {
-//     tabBarOptions: {
-//         activeTintColor: Colors.accentColor,
-//         shifting: true,
-//         barStyle: {
-//             backgroundColor: Colors.primaryColor
-//         }
-//     }
-// }) 
-// : createBottomTabNavigator( tabScreenConfig, {
-//     tabBarOptions: {
-//         activeTintColor: Colors.accent
-//     }
-// });
 
 //134
 const FilterNavigator = createStackNavigator(
@@ -181,5 +166,14 @@ const MainNavigator = createDrawerNavigator({
         }
     }
     );
+
+    // const styles = StyleSheet.create({
+    //     text:{
+    //         fontFamily: 'open-sans-bold', 
+    //         textAlign: 'center', 
+    //         color: 'gray'
+    //     }
+        
+    //     });
 
 export default createAppContainer(MainNavigator);
