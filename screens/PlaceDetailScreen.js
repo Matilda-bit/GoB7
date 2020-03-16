@@ -22,7 +22,7 @@ PlaceDetailScreen.navigationOptions = (navigationData) => {
     const selectedItem = PLACE.find(myItem => myItem.id === myId );
     return {
         headerTitle: selectedItem.title,
-        headerRight: (
+        headerRight: () =>
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
                    <Item 
                     title='Favorite' 
@@ -32,7 +32,6 @@ PlaceDetailScreen.navigationOptions = (navigationData) => {
                     }}
                     /> 
             </HeaderButtons>
-        )
             
     };
 };
