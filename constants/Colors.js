@@ -2,6 +2,7 @@ export default {
     primary: '#f7287b',
     accent: '#c717fc',
     wisteria: '#8e44ad',
+    wisteria1: '#c56cf0',
     primaryColor: '#4a1448c',
     accentColor: '#ff6f00',
     c1:'#ea8685',
