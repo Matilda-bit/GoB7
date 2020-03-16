@@ -20,7 +20,7 @@ export const PLACE = [
         ['c1'],
         'Caldo Gourmet Pizza Bar',
         'https://caldo.co.il/uploads/images/image-2320180515162615_20190207101140.jpg',
-        'Derech Metsada 47, Be\'er Sheva, 8435729',
+        'Derech Metsada 47',
         '12pm–12am'
     ),
     new Place(
@@ -28,7 +28,7 @@ export const PLACE = [
         ['c1','c3'],
         'Sifriya',
         'https://hasifria.com/wp-content/uploads/2016/12/14114792_1244442835606710_5278934233671757650_o.jpg',
-        'one center, Yitshak Nafha St 25, Be\'er Sheva',
+        'one center, Yitshak Nafha St 25',
         '12pm–2am'
     ),
     new Place(
@@ -36,7 +36,7 @@ export const PLACE = [
         ['c1','c3'],
         'Nafis',
         'https://www.nafis.co.il/wp-content/uploads/2017/08/p1.jpg',
-        'Derekh Hebron 62, Be\'er Sheva',
+        'Derekh Hebron 62',
         'Open 24 hours' 
     ),
     new Place(
@@ -44,7 +44,7 @@ export const PLACE = [
         ['c1'],
         'Goomba',
         'https://lh5.googleusercontent.com/p/AF1QipN799OydWhv4jzaV-tEXorRV5hMiaB4yb1NshTH=s507-k-no',
-        'ברוך קטניקא 2, Be\'er Sheva',
+        'ברוך קטניקא 2',
         '12pm–12am' 
     ),
     new Place(
@@ -52,7 +52,7 @@ export const PLACE = [
         ['c5'],
         'Australian Soldier Park',
         'https://lh5.googleusercontent.com/p/AF1QipOBh0SY59ZLelZ9J40jeCxx_MlWW5rFtdel3rS4=w203-h114-k-no',
-        'Abba Ahimeir St 43, Be\'er Sheva',
+        'Abba Ahimeir St 43',
         '11am–8:45pm' 
     ),
     new Place(
@@ -76,7 +76,7 @@ export const PLACE = [
         ['c3'],
         'Rosa Bar',
         'https://www.google.com/maps/uv?hl=en&pb=!1s0x15026667717193d9%3A0x6b2baf72394de95f!3m1!7e115!4shttps%3A%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOAN18LlXzjnEEwKYXv4N8sdQL9Gxnwq5fM4OwI%3Dw390-h262-n-k-no!5sBar%20-%20Google%20Search!15sCAQ&imagekey=!1e10!2sAF1QipOAN18LlXzjnEEwKYXv4N8sdQL9Gxnwq5fM4OwI#',
-        'Rabbi Akiva St, Be\'er Sheva' ,
+        'Rabbi Akiva St' ,
         '9pm–4am' 
     ),
     new Place(
@@ -84,7 +84,7 @@ export const PLACE = [
         ['c1'],
         'Kampai - קמפאי',
         'https://eatintlv.com/wp-content/uploads/2017/11/Kampai-3.jpg',
-        'מתחם ביג, ha\'handasa 1, Be\'er Sheva' ,
+        'מתחם ביג, ha\'handasa 1' ,
         '12pm–12:30am' 
     ),
     new Place(
@@ -92,7 +92,7 @@ export const PLACE = [
         ['c3'],
         'BarBaSaba',
         'https://lh5.googleusercontent.com/p/AF1QipNOQBz-pSIO8RE51IHsfpiPD2wrjohTFTo_QFHz=s676-k-no',
-        'Ha-Tikva St 8, Be\'er Sheva',
+        'Ha-Tikva St 8',
         '9pm–4am' 
     ),
     new Place(
@@ -108,7 +108,7 @@ export const PLACE = [
         ['c5','c6'],
         'Carasso Science Park',
         'https://www.israel-in-photos.com/wp-content/uploads/2018/10/Carasso-Science-Park-in-Beersheba-2.jpg',
-        'HaAtsmaut St 79, Be\'er Sheva' ,
+        'HaAtsmaut St 79' ,
         '9am–5pm'
     ),
     new Place(
@@ -116,7 +116,7 @@ export const PLACE = [
         ['c6'],
         'Negev Museum of Art',
         'https://media-cdn.tripadvisor.com/media/photo-s/0d/2c/d8/63/negev-museum-of-art-first.jpg',
-        'HaAtsmaut St 60, Be\'er Sheva',
+        'HaAtsmaut St 60',
         '12-7 pm' 
     ),
     new Place(
@@ -148,7 +148,7 @@ export const PLACE = [
         ['c2'],
         'עופר גרנד קניון באר שבע',
         'https://lh5.googleusercontent.com/p/AF1QipOJXcAeb5sCnDwS33vAi5fgS96Tr3EVwJnSSh9H=s648-k-no',
-        'David Tuviyahu Ave 125, Be\'er Sheva',
+        'David Tuviyahu Ave 125',
         '9:30am–10pm' 
     ),
     new Place(
@@ -156,7 +156,7 @@ export const PLACE = [
         ['c2'],
         'IKEA',
         'https://lh5.googleusercontent.com/p/AF1QipMxb7N1WkyFSvlvTFqUnah2Yh3N4jYsdt-BhpiD=s773-k-no',
-        'Yarden St 24, Be\'er Sheva',
+        'Yarden St 24',
         '10am–9pm' 
     ),
     new Place(
@@ -172,7 +172,7 @@ export const PLACE = [
         ['c4'],
         'Forum Night Club',
         'https://scontent.ftlv2-1.fna.fbcdn.net/v/t1.0-9/79986682_10156465162971736_6609777269214806016_o.jpg?_nc_cat=109&_nc_ohc=ofm8VH3xQRQAQlicEJuFb3IkrlMLcajqlCGnv3E3X2O4BKe1N2uPf9ZQw&_nc_ht=scontent.ftlv2-1.fna&oh=e98be2f1c2861883a562075dbe4a50f3&oe=5EA40C97',
-        'Nisim Elkayam St 10, Beer Shava',
+        'Nisim Elkayam St 10',
         '11:30pm–5:30am' 
     ),
     new Place(
@@ -180,7 +180,7 @@ export const PLACE = [
         ['c4'],
         'Club Nika B7',
         'https://lh5.googleusercontent.com/p/AF1QipPeuEy842JpUH3DbY4wIgN2s3QyzbCInScmD9nh=s634-k-no',
-        'Hadassa St 20, Be\'er Sheva',
+        'Hadassa St 20',
         '11pm–4am' 
     ),
     new Place(
