@@ -9,7 +9,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 //import { MapView, Permissions } from 'expo';
 
 import HeaderButton from '../components/HeaderButton';
-
+import Header from '../components/Header';
 
 const MapScreen = props => {
  //   const myMap;
@@ -40,9 +40,10 @@ const MapScreen = props => {
 MapScreen.navigationOptions = (navData) =>{
     return {
     headerTitle: 'Maps',
+    headerRight: () => <Header />,
     //134
     //burger menu
-    headerLeft: 
+    headerLeft:  () =>
         <HeaderButtons HeaderButtonComponent={HeaderButton}>
             <Item title="Menu" iconName='ios-menu' onPress={() => {
                 navData.navigation.toggleDrawer();
