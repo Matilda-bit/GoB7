@@ -4,7 +4,7 @@ import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import {  enableScreens } from 'react-native-screens';
 
-import Header from './components/Header';
+//import Header from './components/Header';
 import PlacesNavigator from './navigation/PlacesNavigator';
 
 
@@ -12,8 +12,13 @@ enableScreens();
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    'open-sans-bold': require('./assets/fonts/Amatic-Bold.ttf'),
+    'open-sans-title': require('./assets/fonts/Titillium-Bold.otf'),
+    'open-sans-amatic': require('./assets/fonts/Amatic-Bold.ttf'),
     'open-sans-lato' : require('./assets/fonts/ChunkFive-Regular.ttf'),
+    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+    //'open-sans-light' : require('./assets/fonts/OpenSans-Light.ttf'),
+    'open-sans-regular' : require('./assets/fonts/OpenSans-Regular.ttf')
+    
   });
 };
 
@@ -36,10 +41,13 @@ export default function App() {
  //onStartGame={startGameHandler}
  //{content}
   return (
+    // <View style={styles.screen}>
+    //   <Header />
+    //   <PlacesNavigator />
+    // </View>
     <View style={styles.screen}>
-      <Header />
-      <PlacesNavigator />
-    </View>
+    <PlacesNavigator />
+  </View>
   );
 };
 
