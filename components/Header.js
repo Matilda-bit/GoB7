@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Colors from '../constants/Colors';
-import BodyText from './BodyText';
+import TitleText from './TitleText';
 
 const Header = () => {
     return (
         <View style={styles.header}>
-            <BodyText><Text style={styles.title}>Go B7</Text></BodyText>
+            <TitleText><Text style={styles.title}>Go B7</Text></TitleText>
 
         </View>
     );
@@ -15,9 +15,12 @@ const Header = () => {
 const styles = StyleSheet.create({
     header: {
         width: '100%',
-        height: 85,
-        paddingTop: 35,
-        backgroundColor: Colors.wisteria,
+        height: 60,
+        paddingRight: 18,
+        paddingBottom: 5,
+
+        //paddingTop: 35,
+        //backgroundColor: Colors.wisteria,
         alignItems: 'center',
         justifyContent: 'center'       
     },

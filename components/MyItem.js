@@ -7,7 +7,7 @@ import {
     ImageBackground
 } from 'react-native';
 
-
+import BodyText from '../components/BodyText';
 
 const MyItem = props => {
     return (
@@ -25,9 +25,10 @@ const MyItem = props => {
                             
                         </ImageBackground>
                     </View>
+
                     <View style = {{...styles.myRow, ...styles.myDetail}}>
-                    <Text>{props.location}</Text>
-                    <Text>{props.openingHours.toUpperCase()}</Text>
+                    <BodyText>{props.location}</BodyText>
+                    <BodyText >{props.openingHours.toUpperCase()}</BodyText>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -42,22 +43,19 @@ const styles = StyleSheet.create({
     myItem: {
         height: 200,
         width: '100%',
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#ffffff',
         borderRadius: 10,
         overflow: 'hidden',
-        marginVertical: 12
-
-         
-        
+        marginVertical: 12    
     },
     myHeader: {
         height: '85%'
     },
     myDetail: {
-        paddingHorizontal: 10,
+        paddingHorizontal: 7,
         justifyContent: 'space-between',
         alignItems: 'center',
-        height: '15%'
+        height: '15%'       
     },
     bgImage: {
         width: '100%',
