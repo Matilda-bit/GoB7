@@ -2,7 +2,6 @@ import React from 'react';
 
 import { CATEGORIES, PLACE } from '../data/dummy-data';
 import PlaceList from '../components/PlaceList';
-
 const CategoryEatScreen = props => {
     
     //give a value storing in CategoriesScreen
@@ -13,7 +12,10 @@ const CategoryEatScreen = props => {
     const displayedPlaces = PLACE.filter(
         place => place.categoryId.indexOf(catId) >=0);
 
-    return    <PlaceList listData={displayedPlaces} navigation={props.navigation}/>;
+    return    <PlaceList 
+                listData={displayedPlaces} 
+                navigation={props.navigation}
+                />;
 };
 
 //add dinamic configure for headerTitle because we need to use props after fun definition
