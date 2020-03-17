@@ -27,10 +27,6 @@ const PlaceDetailScreen = props => {
                 <WhiteBodyText>address: {selectedItem.location}, Be'er sheva</WhiteBodyText>
                 <WhiteBodyText>opening hours: {selectedItem.openingHours.toUpperCase()}</WhiteBodyText> 
             </View> 
-           
-            <View style = {styles.screen}>
-                <Text>{selectedItem.title}</Text>
-            </View>
         </ScrollView>
     );
 };
@@ -49,8 +45,7 @@ PlaceDetailScreen.navigationOptions = (navigationData) => {
                        console.log('Mark as favorite!');
                     }}
                     /> 
-            </HeaderButtons>
-            
+            </HeaderButtons>    
     };
 };
 
@@ -60,7 +55,6 @@ const styles = StyleSheet.create({
         //padding: 5,
         paddingHorizontal: 7,
         justifyContent: 'space-around',
-        //alignItems: 'center',
         alignItems: 'flex-start',
         flexDirection: 'column'       
     },
