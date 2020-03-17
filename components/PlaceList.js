@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import MyItem from './MyItem';
-
+import Screenbk from '../constants/default-styles';
 
 const PlaceList = props => {
     //data for my FlatList in renderItem
@@ -26,12 +26,12 @@ const PlaceList = props => {
     };
 
 
-    return  (<View style = {styles.list}>
+    return  (<View style = {{...styles.list, ...Screenbk.screen}}>
     <FlatList 
         data={props.listData} 
         keyExtractor={(item,idex) => item.id } 
         renderItem={renderMyItem}
-        style={{width: '90%'}}
+        style={{width: '95%'}}
         />
     </View>);
 };
