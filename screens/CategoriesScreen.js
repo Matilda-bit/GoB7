@@ -10,12 +10,11 @@ import Header from '../components/Header';
 import HeaderButton from '../components/HeaderButton';
 import CategoryGridTile from '../components/CategoryGridTile';
 
-
 const CategoriesScreen = props => {
     //console.log(props);
     //renderGridItem must be here for access to my props
     const renderGridItem = (itemData) => {
-        return (
+        return (           
             <CategoryGridTile 
                 title={itemData.item.title} 
                 color={itemData.item.color}
@@ -27,16 +26,16 @@ const CategoriesScreen = props => {
                         } 
                     });
                 }}
-            />
+            />         
             );
     };
     return (
-        <FlatList 
+        <FlatList          
           keyExtractor={(item,index) => item.id}
           data={CATEGORIES}
           renderItem={renderGridItem} 
           numColumns = {2} 
-        />
+        />    
     );
 };
 //add some prop(JS obj) for my CategoriesScreen (header)
@@ -54,14 +53,4 @@ CategoriesScreen.navigationOptions = (navData) =>{
                 </HeaderButtons>
         };
 };
-
-const styles = StyleSheet.create({
-screen:{
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-},
-
-});
-
 export default CategoriesScreen;
