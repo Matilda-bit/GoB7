@@ -27,8 +27,8 @@ const MyItem = props => {
                     </View>
 
                     <View style = {{...styles.myRow, ...styles.myDetail}}>
-                    <BodyText>{props.location}</BodyText>
-                    <BodyText >{props.openingHours.toUpperCase()}</BodyText>
+                        <BodyText>{props.location}</BodyText>
+                        <BodyText>{props.openingHours.toUpperCase()}</BodyText>
                     </View>
                 </View>
             </TouchableOpacity>
