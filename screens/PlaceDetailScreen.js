@@ -4,23 +4,28 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import { PLACE } from '../data/dummy-data';
 import HeaderButton from '../components/HeaderButton';
-import BodyText from '../components/BodyText';
-
+import WhiteBodyText from '../components/WhiteBodyText';
+import Screenbk from '../constants/default-styles';
 
 const PlaceDetailScreen = props => {
     const myId = props.navigation.getParam('myId');
 
     const selectedItem = PLACE.find(myItem => myItem.id === myId );
-    
+    //138 - ingredients & steps
     return (
-        <ScrollView>
+        <ScrollView style={Screenbk.screen2}>
             <View style={styles.myItem}>
-            <ImageBackground source={{uri: selectedItem.image}} style={styles.image} />
+            <ImageBackground 
+                source={{uri: selectedItem.imageUrl}} 
+                style={styles.imageDet} 
+            />      
             </View>
+      
             <View style={styles.myDetail}>          
-                <BodyText>{selectedItem.categotyId}</BodyText>
-                <BodyText>{selectedItem.location}</BodyText>
-                <BodyText>{selectedItem.openingHours.toUpperCase()}</BodyText> 
+                <WhiteBodyText>category:  {selectedItem.categoryId.map(categoryId => <WhiteBodyText key={categoryId}>{categoryId} </WhiteBodyText>)}</WhiteBodyText>
+               
+                <WhiteBodyText>address: {selectedItem.location}, Be'er sheva</WhiteBodyText>
+                <WhiteBodyText>opening hours: {selectedItem.openingHours.toUpperCase()}</WhiteBodyText> 
             </View> 
            
             <View style = {styles.screen}>
@@ -51,30 +56,27 @@ PlaceDetailScreen.navigationOptions = (navigationData) => {
 
 const styles = StyleSheet.create({
     myDetail: {
-        padding: 15,
-        //paddingHorizontal: 7,
+        paddingTop:5,
+        //padding: 5,
+        paddingHorizontal: 7,
         justifyContent: 'space-around',
-        alignItems: 'center',
-        flexDirection: 'row'
-        //height: '15%'       
+        //alignItems: 'center',
+        alignItems: 'flex-start',
+        flexDirection: 'column'       
     },
     title:{
         fontFamily: 'open-sans-lato',
         fontSize: 22,
         textAlign: 'center'
     },
-    // screen:{
-    //     flex: 1,
-    //     justifyContent: "center",
-    //     alignItems: "center"
-    // },
     myItem: {
         height: 200,
-        borderRadius: 10,
-        //overflow: 'hidden',
-        marginVertical: 12 
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        overflow: 'hidden'
+        //marginVertical: 12 
     },
-    image: {
+    imageDet: {
         width: '100%',
         height: '100%',
         justifyContent: 'flex-end'
