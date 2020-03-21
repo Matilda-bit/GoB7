@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { CATEGORIES, PLACE } from '../data/dummy-data';
+
+import { CATEGORIES } from '../data/dummy-data';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import PlaceList from '../components/PlaceList';
 import HeaderButton from '../components/HeaderButton';
@@ -13,7 +15,9 @@ const CategoryEatScreen = props => {
     //pass data
     //const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
 
-    const displayedPlaces = PLACE.filter(
+    const availablePlaces = useSelector(state => state.places.filteredPlaces);
+
+    const displayedPlaces = availablePlaces.filter(
         place => place.categoryId.indexOf(catId) >=0);
 
     return    <PlaceList 
@@ -30,14 +34,14 @@ CategoryEatScreen.navigationOptions = (navigationData) => {
 
     return {
         headerTitle: selectedCategory.title ,
-        headerRight: () => <Header />,
+        headerRight: () => <Header />
         //burger menu
-        headerLeft:  () =>
-            <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                <Item title="Menu" iconName='ios-menu' onPress={() => {
-                    navigationData.navigation.toggleDrawer();
-                }} />
-            </HeaderButtons>     
+        // headerLeft:  () =>
+        //     <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        //         <Item title="Menu" iconName='ios-menu' onPress={() => {
+        //             navigationData.navigation.toggleDrawer();
+        //         }} />
+        //     </HeaderButtons>     
     };
 };
 

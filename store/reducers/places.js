@@ -3,7 +3,7 @@ import { PLACE } from '../../data/dummy-data';
 
 const initialState = {
     places: PLACE,
-    folteredPlaces: PLACE,
+    filteredPlaces: PLACE,
     favoritePlaces: []
 
 };

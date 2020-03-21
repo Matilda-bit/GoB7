@@ -1,7 +1,7 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import PlaceList from '../components/PlaceList';
-import { PLACE } from '../data/dummy-data';
 
 import Header from '../components/Header';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
@@ -9,7 +9,10 @@ import HeaderButton from '../components/HeaderButton';
 
 
 const FavoritesScreen = props => {
-    const favPlaces = PLACE.filter(place => place.id === 'p1' || place.id === 'p2');
+
+    const favPlaces = useSelector(state => state.places.favoritePlaces);
+    
+    //const favPlaces = availablePlaces.filter(place => place.id === 'p1' || place.id === 'p2');
    return <PlaceList listData={favPlaces} navigation={props.navigation} />;
 };
 

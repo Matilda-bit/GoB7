@@ -1,16 +1,25 @@
-import React from 'react';
-import { ScrollView, View, ImageBackground, Text, StyleSheet } from 'react-native';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
+import { ScrollView, View, ImageBackground, StyleSheet } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
-import { PLACE } from '../data/dummy-data';
 import HeaderButton from '../components/HeaderButton';
 import WhiteBodyText from '../components/WhiteBodyText';
 import Screenbk from '../constants/default-styles';
 
 const PlaceDetailScreen = props => {
     const myId = props.navigation.getParam('myId');
+    const availablePlaces = useSelector(state => state.places.places);
+    
+    const selectedItem = availablePlaces.find(myItem => myItem.id === myId );
 
-    const selectedItem = PLACE.find(myItem => myItem.id === myId );
+    // useEffect(() => {
+    //     props.navigation.setParams({placeTitle: selectedItem.title });
+    // }, [selectedItem]);
+
+    
+
     //138 - ingredients & steps
     return (
         <ScrollView style={Screenbk.screen2}>
@@ -33,9 +42,10 @@ const PlaceDetailScreen = props => {
 
 PlaceDetailScreen.navigationOptions = (navigationData) => {
     const myId = navigationData.navigation.getParam('myId');
-    const selectedItem = PLACE.find(myItem => myItem.id === myId );
+    const placeTitle =navigationData.navigation.getParam('placeTitle');
+    //const selectedItem = PLACE.find(myItem => myItem.id === myId );
     return {
-        headerTitle: selectedItem.title,
+        headerTitle: placeTitle,
         headerRight: () =>
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
                    <Item 
