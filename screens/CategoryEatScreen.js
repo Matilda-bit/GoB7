@@ -1,7 +1,11 @@
 import React from 'react';
 
 import { CATEGORIES, PLACE } from '../data/dummy-data';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import PlaceList from '../components/PlaceList';
+import HeaderButton from '../components/HeaderButton';
+import Header from '../components/Header';
+
 const CategoryEatScreen = props => {
     
     //give a value storing in CategoriesScreen
@@ -25,7 +29,15 @@ CategoryEatScreen.navigationOptions = (navigationData) => {
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
 
     return {
-        headerTitle: selectedCategory.title      
+        headerTitle: selectedCategory.title ,
+        headerRight: () => <Header />,
+        //burger menu
+        headerLeft:  () =>
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <Item title="Menu" iconName='ios-menu' onPress={() => {
+                    navigationData.navigation.toggleDrawer();
+                }} />
+            </HeaderButtons>     
     };
 };
 
