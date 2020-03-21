@@ -3,12 +3,21 @@ import { StyleSheet, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import {  enableScreens } from 'react-native-screens';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+
 
 //import Header from './components/Header';
 import PlacesNavigator from './navigation/PlacesNavigator';
-
+import placesReducer from './store/reducers/places'
 
 enableScreens();
+
+const rootReducer = combineReducers({
+  places: placesReducer
+});
+
+const store = createStore(rootReducer);
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -37,24 +46,17 @@ export default function App() {
       
   };
 
-  //let content = <MapScreen  />;
- //onStartGame={startGameHandler}
- //{content}
   return (
-    // <View style={styles.screen}>
-    //   <Header />
-    //   <PlacesNavigator />
-    // </View>
-    <View style={styles.screen}>
-    <PlacesNavigator />
-  </View>
+    <Provider store={store}> 
+      <PlacesNavigator />
+    </Provider>
   );
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1
-  }
+// const styles = StyleSheet.create({
+//   screen: {
+//     flex: 1
+//   }
   
-});
+// });
 
