@@ -6,7 +6,8 @@ const WhiteBodyText = props => <Text style={{ ...styles.body, ...props.style }}>
 const styles = StyleSheet.create({
     body: {
         fontFamily: 'open-sans-bold',
-        color: '#ffffff'
+        color: '#ffffff',
+        fontSize: 20,
     }
 });
 
