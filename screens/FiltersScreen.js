@@ -5,16 +5,16 @@ import {
     StyleSheet ,
     Platform
 } from 'react-native';
-
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { Switch } from 'react-native-paper';
+
 import HeaderButton from '../components/HeaderButton';
 import Header from '../components/Header';
-import { Switch } from 'react-native-paper';
 import Colors from '../constants/Colors'
 
 const FilterSwitch = props => {
     return(
-    <View style = {styles.filterContainer}>
+    <View style={styles.filterContainer}>
         <Text>{props.label}</Text>
         <Switch 
             trackColor={{true: Colors.accent}}
