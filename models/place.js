@@ -7,7 +7,7 @@ class Place {
         location,
         openingHours     
         ) {
-            this.id =id;
+            this.id = id;
             this.categoryId = categoryId;
             this.title = title;
             this.imageUrl = imageUrl;
