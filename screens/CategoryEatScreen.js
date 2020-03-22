@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux';
 
 
 import { CATEGORIES } from '../data/dummy-data';
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import PlaceList from '../components/PlaceList';
-import HeaderButton from '../components/HeaderButton';
 import Header from '../components/Header';
 
 const CategoryEatScreen = props => {
@@ -27,9 +25,10 @@ const CategoryEatScreen = props => {
 };
 
 //add dinamic configure for headerTitle because we need to use props after fun definition
-CategoryEatScreen.navigationOptions = (navigationData) => {
+CategoryEatScreen.navigationOptions = navigationData => {
     //console.log(navigationData);
     const catId= navigationData.navigation.getParam('categoryId');
+    
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
 
     return {
