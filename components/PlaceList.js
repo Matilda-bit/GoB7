@@ -2,10 +2,14 @@ import React from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import MyItem from './MyItem';
 import Screenbk from '../constants/default-styles';
+import { useSelector } from 'react-redux';
 
 const PlaceList = props => {
+    const favoritePlaces = useSelector(state => state.places.favoritePlaces);
+
     //data for my FlatList in renderItem
     const renderMyItem = itemData => {
+        const isFavorite = favoritePlaces.some(place => place.id === itemData.item.id);
         return (
             <MyItem 
                 title={itemData.item.title} 
@@ -17,7 +21,8 @@ const PlaceList = props => {
                         routeName: 'MyDetail', 
                         params: {
                             placeId: itemData.item.id,
-                            placeTitle: itemData.item.title
+                            placeTitle: itemData.item.title,
+                            isFav: isFavorite
                         } 
                     });
                 }}
