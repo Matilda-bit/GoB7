@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     body: {
         fontFamily: 'open-sans-bold',
         color: '#ffffff',
-        fontSize: 20,
+        fontSize: 16,
     }
 });
 
