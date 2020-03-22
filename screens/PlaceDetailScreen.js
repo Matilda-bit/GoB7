@@ -1,22 +1,37 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-
+import React, { useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { ScrollView, View, ImageBackground, StyleSheet } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import HeaderButton from '../components/HeaderButton';
 import WhiteBodyText from '../components/WhiteBodyText';
 import Screenbk from '../constants/default-styles';
+import { toggleFavorite } from '../store/actions/places'
+
+// const ListItem = props => {
+//     return (
+//       <View style={styles.listItem}>
+//         <DefaultText>{props.children}</DefaultText>
+//       </View>
+//     );
+//   };
 
 const PlaceDetailScreen = props => {
-    const myId = props.navigation.getParam('myId');
     const availablePlaces = useSelector(state => state.places.places);
-    
-    const selectedItem = availablePlaces.find(myItem => myItem.id === myId );
+    const placeId = props.navigation.getParam('placeId');
 
-    // useEffect(() => {
-    //     props.navigation.setParams({placeTitle: selectedItem.title });
-    // }, [selectedItem]);
+    const selectedItem = availablePlaces.find(place => place.id === placeId );
+
+    const dispatch = useDispatch();
+
+    const toogleFavoriteHandler = useCallback(() =>{
+        dispatch(toggleFavorite(placeId));
+    }, [dispatch, placeId]);
+
+    useEffect(() => {
+        //props.navigation.setParams({placeTitle: selectedItem.title });
+        props.navigation.setParams({toggleFav: toogleFavoriteHandler});
+    }, [toogleFavoriteHandler]);
 
     
 
@@ -41,9 +56,10 @@ const PlaceDetailScreen = props => {
 };
 
 PlaceDetailScreen.navigationOptions = (navigationData) => {
-    const myId = navigationData.navigation.getParam('myId');
+    //const myId = navigationData.navigation.getParam('myId');
     const placeTitle =navigationData.navigation.getParam('placeTitle');
     //const selectedItem = PLACE.find(myItem => myItem.id === myId );
+    const toggleFavorite = navigationData.navigation.getParam('toggleFav');
     return {
         headerTitle: placeTitle,
         headerRight: () =>
@@ -51,9 +67,7 @@ PlaceDetailScreen.navigationOptions = (navigationData) => {
                    <Item 
                     title='Favorite' 
                     iconName='ios-star' 
-                    onPress={() => {
-                       console.log('Mark as favorite!');
-                    }}
+                    onPress={toggleFavorite}
                     /> 
             </HeaderButtons>    
     };
