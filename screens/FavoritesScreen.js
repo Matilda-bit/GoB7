@@ -1,15 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
-import PlaceList from '../components/PlaceList';
-
-import Header from '../components/Header';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import HeaderButton from '../components/HeaderButton';
 
+import HeaderButton from '../components/HeaderButton';
+import PlaceList from '../components/PlaceList';
+import Header from '../components/Header';
 
 const FavoritesScreen = props => {
-
     const favPlaces = useSelector(state => state.places.favoritePlaces);
     
     //const favPlaces = availablePlaces.filter(place => place.id === 'p1' || place.id === 'p2');
@@ -28,13 +25,5 @@ FavoritesScreen.navigationOptions = navData =>{
             </HeaderButtons>
     };
 };
-
-// const styles= StyleSheet.create ({
-//    screen: {
-//        flex: 1,
-//        justifyContent: 'center',
-//        alignItems: 'center'
-//    } 
-// });
 
 export default FavoritesScreen;
