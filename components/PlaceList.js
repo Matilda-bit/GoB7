@@ -16,7 +16,7 @@ const PlaceList = props => {
                     props.navigation.navigate({ 
                         routeName: 'MyDetail', 
                         params: {
-                            myId: itemData.item.id,
+                            placeId: itemData.item.id,
                             placeTitle: itemData.item.title
                         } 
                     });
