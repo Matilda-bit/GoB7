@@ -167,13 +167,5 @@ const MainNavigator = createDrawerNavigator({
     }
     );
 
-    // const styles = StyleSheet.create({
-    //     text:{
-    //         fontFamily: 'open-sans-bold', 
-    //         textAlign: 'center', 
-    //         color: 'gray'
-    //     }
-        
-    //     });
 
 export default createAppContainer(MainNavigator);
