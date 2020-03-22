@@ -13,7 +13,7 @@ import CategoryGridTile from '../components/CategoryGridTile';
 const CategoriesScreen = props => {
     //console.log(props);
     //renderGridItem must be here for access to my props
-    const renderGridItem = (itemData) => {
+    const renderGridItem = itemData => {
         return (           
             <CategoryGridTile 
                 title={itemData.item.title} 
