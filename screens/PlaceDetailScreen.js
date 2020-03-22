@@ -8,17 +8,12 @@ import WhiteBodyText from '../components/WhiteBodyText';
 import Screenbk from '../constants/default-styles';
 import { toggleFavorite } from '../store/actions/places'
 
-// const ListItem = props => {
-//     return (
-//       <View style={styles.listItem}>
-//         <DefaultText>{props.children}</DefaultText>
-//       </View>
-//     );
-//   };
 
 const PlaceDetailScreen = props => {
     const availablePlaces = useSelector(state => state.places.places);
     const placeId = props.navigation.getParam('placeId');
+    const currentPlaceIsFavorite = useSelector(state => state.places.favoritePlaces.some(place => place.id === placeId));
+    
 
     const selectedItem = availablePlaces.find(place => place.id === placeId );
 
@@ -33,7 +28,9 @@ const PlaceDetailScreen = props => {
         props.navigation.setParams({toggleFav: toogleFavoriteHandler});
     }, [toogleFavoriteHandler]);
 
-    
+    useEffect(() => {
+        props.navigation.setParams({isFav: currentPlaceIsFavorite});
+    }, [currentPlaceIsFavorite]);
 
     //138 - ingredients & steps
     return (
@@ -60,13 +57,14 @@ PlaceDetailScreen.navigationOptions = (navigationData) => {
     const placeTitle =navigationData.navigation.getParam('placeTitle');
     //const selectedItem = PLACE.find(myItem => myItem.id === myId );
     const toggleFavorite = navigationData.navigation.getParam('toggleFav');
+    const isFavorite = navigationData.navigation.getParam('isFav');
     return {
         headerTitle: placeTitle,
         headerRight: () =>
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
                    <Item 
                     title='Favorite' 
-                    iconName='ios-star' 
+                    iconName={isFavorite ? 'ios-star' :'ios-star-outline'} 
                     onPress={toggleFavorite}
                     /> 
             </HeaderButtons>    
