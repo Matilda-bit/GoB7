@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { CATEGORIES } from '../data/dummy-data';
 import PlaceList from '../components/PlaceList';
 import Header from '../components/Header';
-import BodyText from '../components/BodyText';
+import BodyText from '../components/text/BodyText';
 
 const CategoryEatScreen = props => {
     

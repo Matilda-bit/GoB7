@@ -4,7 +4,7 @@ import { ScrollView, View, ImageBackground, StyleSheet } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import HeaderButton from '../components/HeaderButton';
-import WhiteBodyText from '../components/WhiteBodyText';
+import WhiteBodyText from '../components/text/WhiteBodyText';
 import Screenbk from '../constants/default-styles';
 import { toggleFavorite } from '../store/actions/places'
 

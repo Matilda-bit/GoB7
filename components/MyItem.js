@@ -7,7 +7,7 @@ import {
     ImageBackground
 } from 'react-native';
 
-import BodyText from '../components/BodyText';
+import BodyText from './text/BodyText';
 
 const MyItem = props => {
     return (

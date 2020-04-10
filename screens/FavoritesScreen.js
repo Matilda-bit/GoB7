@@ -6,7 +6,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/HeaderButton';
 import PlaceList from '../components/PlaceList';
 import Header from '../components/Header';
-import BodyText from '../components/BodyText';
+import BodyText from '../components/text/BodyText';
 const FavoritesScreen = props => {
     const favPlaces = useSelector(state => state.places.favoritePlaces);
 
