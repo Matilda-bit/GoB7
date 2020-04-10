@@ -18,15 +18,16 @@ import { setFilters } from '../store/actions/places';
 
 const FilterSwitch = props => {
     return(
-    <View style={styles.filterContainer}>
-        <Text>{props.label}</Text>
-        <Switch 
-            trackColor={{true: Colors.accent}}
-            //thumbColor= {Platform.OS === 'android' ? Colors.accent : ''}
-            value={props.state} 
-            onValueChange={props.onChange}
-        />
-    </View>
+    
+        <View style={styles.filterContainer}>
+            <Text>{props.label}</Text>
+            <Switch 
+                trackColor={{true: Colors.accent}}
+                //thumbColor= {Platform.OS === 'android' ? Colors.accent : ''}
+                value={props.state} 
+                onValueChange={props.onChange}
+            />
+        </View>
     );
 };
 
@@ -89,17 +90,19 @@ const FiltersScreen = props => {
     }, [saveFilters]);
 
         return (
+            <ScrollView>
             <View style = {styles.screen}>
             <Text style = {styles.title}>Available Filters / Restrictions </Text>
-            <FilterSwitch 
-                label='open-Shabbath' 
-                state={isOpenShabbath} 
-                onChange={newValue => setIsOpenShabbath(newValue)}
-            />
+            
             <FilterSwitch 
                 label='open now' 
                 state={isOpenNow} 
                 onChange={newValue => setIsOpenNow(newValue)}
+            />
+            <FilterSwitch 
+                label='open-Shabbath' 
+                state={isOpenShabbath} 
+                onChange={newValue => setIsOpenShabbath(newValue)}
             />
             <FilterSwitch 
                 label='vegan' 
@@ -183,6 +186,7 @@ const FiltersScreen = props => {
             /> */}
             
         </View>
+        </ScrollView>
         );
 };
 
