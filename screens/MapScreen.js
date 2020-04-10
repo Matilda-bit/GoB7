@@ -8,7 +8,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 //import { MapView, Permissions } from 'expo';
 
-import HeaderButton from '../components/HeaderButton';
+import HeaderButton from '../components/UI/HeaderButton';
 import Header from '../components/Header';
 
 const MapScreen = props => {

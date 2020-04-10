@@ -7,7 +7,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import { CATEGORIES } from '../data/dummy-data';
 import Header from '../components/Header';
-import HeaderButton from '../components/HeaderButton';
+import HeaderButton from '../components/UI/HeaderButton';
 import CategoryGridTile from '../components/CategoryGridTile';
 
 const CategoriesScreen = props => {

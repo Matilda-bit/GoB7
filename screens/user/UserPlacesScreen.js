@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
-import HeaderButton from '../../components/HeaderButton';
+import HeaderButton from '../../components/UI/HeaderButton';
 import BodyText from '../../components/text/BodyText';
 import Header from '../../components/Header';
 //import Colors from '../../constants/Colors';

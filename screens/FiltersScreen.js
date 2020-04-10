@@ -10,7 +10,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { Switch } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
 
-import HeaderButton from '../components/HeaderButton';
+import HeaderButton from '../components/UI/HeaderButton';
 import Header from '../components/Header';
 import Colors from '../constants/Colors'
 import { setFilters } from '../store/actions/places';

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ScrollView, View, ImageBackground, StyleSheet } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
-import HeaderButton from '../components/HeaderButton';
+import HeaderButton from '../components/UI/HeaderButton';
 import WhiteBodyText from '../components/text/WhiteBodyText';
 import Screenbk from '../constants/default-styles';
 import { toggleFavorite } from '../store/actions/places'
@@ -28,6 +28,7 @@ const PlaceDetailScreen = props => {
         props.navigation.setParams({toggleFav: toogleFavoriteHandler});
     }, [toogleFavoriteHandler]);
 
+    //isFav from component/PlaceList
     useEffect(() => {
         props.navigation.setParams({isFav: currentPlaceIsFavorite});
     }, [currentPlaceIsFavorite]);
@@ -57,6 +58,7 @@ PlaceDetailScreen.navigationOptions = (navigationData) => {
     const placeTitle =navigationData.navigation.getParam('placeTitle');
     //const selectedItem = PLACE.find(myItem => myItem.id === myId );
     const toggleFavorite = navigationData.navigation.getParam('toggleFav');
+    //isFav from PlaceList
     const isFavorite = navigationData.navigation.getParam('isFav');
     return {
         headerTitle: placeTitle,

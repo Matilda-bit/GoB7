@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
-import HeaderButton from '../components/HeaderButton';
+import HeaderButton from '../components/UI/HeaderButton';
 import PlaceList from '../components/PlaceList';
 import Header from '../components/Header';
 import BodyText from '../components/text/BodyText';
