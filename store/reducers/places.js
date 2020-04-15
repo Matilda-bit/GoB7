@@ -1,5 +1,11 @@
 import { PLACE } from '../../data/dummy-data';
-import { TOGGLE_FAVORITE, SET_FILTERS } from '../actions/places';
+import { 
+    TOGGLE_FAVORITE, 
+    SET_FILTERS, 
+    DELETE_PLACE,
+    CREATE_PLACE,
+    UPDATE_PLACE 
+} from '../actions/places';
 
 const initialState = {
     places: PLACE,
@@ -81,6 +87,50 @@ const placesReducer = (state = initialState, action) => {
             });
             
         return {...state, filteredPlaces: updateFilteredPlaces};
+        case CREATE_PLACE:
+            const newPlace = new Place(
+                new Date().toString(),
+                'u1',
+                action.placeData.title,
+                action.placeData.imageUrl
+            );
+            return {
+                ...state,
+                availablePlaces: state.availablePlaces.concat(newPlace),
+                userPlaces: state.userPlaces.concat(newPlace)
+            };
+        case UPDATE_PLACE:
+            const placeIndex = state.userPlaces.findIndex(
+                prod => prod.id === action.placeId
+            );
+            const updatedPlace = new Place(
+                action.placeId,
+                state.userPlaces[placeIndex].ownerId,
+                action.placeData.title,
+                action.placeData.imageUrl
+            );
+            const updatedUserPlaces = [...state.userPlaces];
+            updatedUserPlaces[placeIndex] = updatedPlace;
+            const availablePlaceIndex = state.availablePlaces.findIndex(
+                prod => prod.id === action.placeId
+            );
+            const updatedAvailablePlaces = [...state.availablePlaces];
+            updatedAvailablePlaces[availablePlaceIndex] = updatedPlace;
+            return {
+                ...state,
+                availablePlaces: updatedAvailablePlaces,
+                userPlaces: updatedUserPlaces
+            };
+        case DELETE_PLACE:
+            return {
+                ...state,
+                userPlaces: state.userPlaces.filter(
+                place => place.id !== action.placeId
+                ),
+                availablePlaces: state.availablePlaces.filter(
+                place => place.id !== action.placeId
+                )
+            };
         default: 
             return state;
     }
