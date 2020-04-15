@@ -6,8 +6,6 @@ import {  enableScreens } from 'react-native-screens';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
-
-//import Header from './components/Header';
 import PlacesNavigator from './navigation/PlacesNavigator';
 import placesReducer from './store/reducers/places'
 
@@ -53,10 +51,4 @@ export default function App() {
   );
 };
 
-// const styles = StyleSheet.create({
-//   screen: {
-//     flex: 1
-//   }
-  
-// });
 
