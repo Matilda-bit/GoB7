@@ -1,4 +1,4 @@
-import { PLACE } from '../../data/dummy-data';
+import { PLACE, CATEGORIES } from '../../data/dummy-data';
 import { 
     TOGGLE_FAVORITE, 
     SET_FILTERS, 
@@ -8,6 +8,7 @@ import {
 } from '../actions/places';
 
 const initialState = {
+    category: CATEGORIES,
     places: PLACE,
     filteredPlaces: PLACE,
     favoritePlaces: [],
