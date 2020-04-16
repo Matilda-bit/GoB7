@@ -3,17 +3,26 @@ import Color from '../constants/Colors';
 import Place from '../models/place';
 
 
+// export const CATEGORIES = [
+//     new Category('food', 'Food', Color.c1),
+//     new Category('shopping', 'Shopping', Color.c6),
+//     new Category('bars & pubs', 'Bars & Pubs', Color.c3),
+//     new Category('clubs', 'Clubs', Color.c5),
+//     new Category('parks', 'Parks', Color.c2),
+//     new Category('city sight', 'City sight', Color.c4),
+//     new Category('water', 'Water', Color.c4),
+//     new Category('trash', 'Trash', Color.c5)
+// ];
 export const CATEGORIES = [
-    new Category('food', 'Food', Color.c1),
-    new Category('shopping', 'Shopping', Color.c6),
-    new Category('bars & pubs', 'Bars & Pubs', Color.c3),
-    new Category('clubs', 'Clubs', Color.c5),
-    new Category('parks', 'Parks', Color.c2),
-    new Category('city sight', 'City sight', Color.c4),
-    new Category('water', 'Water', Color.c4),
-    new Category('trash', 'Trash', Color.c5)
+    new Category('food', 'Food', 'https://eatforum.org/content/uploads/2018/05/table_with_food_top_view_900x700.jpg'),
+    new Category('shopping', 'Shopping','https://www.usnews.com/dims4/USNEWS/cac952f/2147483647/thumbnail/640x420/quality/85/?url=https%3A%2F%2Fmedia.beam.usnews.com%2Fd4%2Fc9%2F6234b77a4ede900294850cace7f0%2F200103-womanshoppingbags-stock.jpg'),
+    new Category('bars & pubs', 'Bars & Pubs', 'https://img.theculturetrip.com/768x432/wp-content/uploads/2018/01/bars_pubs_timisoara.jpg'),
+    new Category('clubs', 'Clubs', 'https://p4cdn4static.sharpschool.com/UserFiles/Servers/Server_151484/Image/clubs.jpg'),
+    new Category('parks', 'Parks', 'https://www.fcgov.com/parks/img/city-park.jpg'),
+    new Category('city sight', 'City sight', 'https://img.theculturetrip.com/wp-content/uploads/2018/02/the_negev_monument-v1.jpg'),
+    new Category('water', 'Water', 'https://d346xxcyottdqx.cloudfront.net/wp-content/uploads/2017/05/Watersplash-NOM-stock-640x425.jpg'),
+    new Category('trash', 'Trash', 'https://cdn.nevadaappeal.com/wp-content/uploads/sites/2/2018/04/Tile-NAP-landfill.jpg')
 ];
-
 export const PLACE = [
     new Place(
         'p1',
