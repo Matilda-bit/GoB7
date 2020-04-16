@@ -14,7 +14,7 @@ import PlaceDetailScreen from '../screens/PlaceDetailScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 //filter screen 134
 import FiltersScreen from '../screens/FiltersScreen';
-
+import CategoryChoiceScreen from '../screens/user/CategoryChoiceScreen';
 import EditPlacesScreen from '../screens/user/EditPlacesScreen';
 import UserPlacesScreen from '../screens/user/UserPlacesScreen';
 import MapScreen from '../screens/MapScreen';
@@ -56,7 +56,6 @@ const PlacesNavigator = createStackNavigator({
 const FavNavigator = createStackNavigator(
     {
     Favorites: FavoritesScreen,
-    //Location: MapScreen,
     MyDetail: PlaceDetailScreen
     }, 
     {
@@ -152,7 +151,8 @@ const UserPlacesNavigator = createStackNavigator(
 
 const AdminNavigator = createStackNavigator(
     {
-        Admin: EditPlacesScreen
+        screen: CategoryChoiceScreen,
+        Admin: EditPlacesScreen,
     },
     {
         navigationOptions: {
