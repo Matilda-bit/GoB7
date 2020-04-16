@@ -46,7 +46,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         borderRadius: 10,
         overflow: 'hidden',
-        marginVertical: 12    
+        marginVertical: 10,
+        borderColor:'black',
+        borderWidth: 0.8,    
     },
     myHeader: {
         height: '85%'
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
     titleContainer: {
         backgroundColor: 'rgba(0,0,0,0.5)',
         paddingVertical: 5 ,
-        paddingHorizontal: 12,
+        //paddingHorizontal: 10,
     }
 });
 
