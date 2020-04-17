@@ -68,11 +68,7 @@ const EditPlacesScreen = props => {
   });
 
   const submitHandler = useCallback(() => {
-    // console.log(formState.title);
-    // console.log(formState.imageUrl);
-    // console.log(formState.location);
-    // console.log(formState.openingHours);
-   
+
     if (!formState.formIsValid) {
       Alert.alert('Wrong input!', 'Please check the errors in the form.', [
         { text: 'Okay' }
@@ -83,7 +79,7 @@ const EditPlacesScreen = props => {
       dispatch(
         placesActions.updatePlace(
           id,
-          catId,
+          editedPlace.categoryId,
           formState.inputValues.title,
           formState.inputValues.imageUrl,
           formState.inputValues.location,
