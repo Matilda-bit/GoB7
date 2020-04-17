@@ -43,13 +43,17 @@ export const deletePlace = id => {
     };  
   };
 
-export const updatePlace = (id, title, imageUrl) => {
+export const updatePlace = (id,categoryId, title, imageUrl, location, openingHours) => {
     return {
-        type: UPDATE_PPLACE,
+        type: UPDATE_PLACE,
         placeId: id,
         placeData: {
+          id,
+          categoryId,
           title,
-          imageUrl
+          imageUrl,
+          location,
+          openingHours
         }    
     };
   };
