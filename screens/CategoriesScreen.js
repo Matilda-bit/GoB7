@@ -1,7 +1,6 @@
 import React from 'react';
 import {  
-    FlatList,
-    StyleSheet
+    FlatList
 } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
@@ -17,7 +16,7 @@ const CategoriesScreen = props => {
         return (           
             <CategoryGridTile 
                 title={itemData.item.title} 
-                categoryImgUrl={itemData.item.categoryImgUrl}
+                image={itemData.item.categoryImgUrl}
                 onSelect={() => {
                     props.navigation.navigate({ 
                         routeName: 'Category', 
