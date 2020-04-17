@@ -1,17 +1,16 @@
 import React from 'react';
 import { FlatList, StyleSheet, View, Text } from 'react-native';
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
+import { CATEGORIES } from '../../data/dummy-data';
 import Header from '../../components/Header';
 import HeaderButton from '../../components/UI/HeaderButton';
 import CategoryGridTile from '../../components/CategoryGridTile';
 import BodyText from '../../components/text/BodyText';
 
 const CategoryChoiceScreen = props => {
-    const Categories = useSelector(state => state.places.category)
     const renderGridItem = itemData => {
-        //const isFavorite = favoritePlaces.some(place => place.id === itemData.item.id);
         return (           
             <CategoryGridTile 
                 title={itemData.item.title} 
@@ -20,9 +19,7 @@ const CategoryChoiceScreen = props => {
                     props.navigation.navigate({ 
                         routeName: 'Admin', 
                         params: {
-                            categoryId: itemData.item.id,
-                            categoryTitle: itemData.item.title,
-                            categoryImg: itemData.item.categoryImgUrl
+                            categoryId: itemData.item.id
                         } 
                     });
                 }}
@@ -36,7 +33,7 @@ const CategoryChoiceScreen = props => {
             </View>
             <FlatList          
                 keyExtractor={(item,index) => item.id}
-                data={Categories}
+                data={CATEGORIES}
                 renderItem={renderGridItem} 
                 numColumns = {2} 
                 style={{width: '100%'}}
