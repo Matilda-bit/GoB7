@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 import { CATEGORIES } from '../data/dummy-data';
@@ -13,10 +13,8 @@ const CategoryEatScreen = props => {
     //give a value storing in CategoriesScreen
     const catId = props.navigation.getParam('categoryId');
     //pass data
-    //const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
-
     const availablePlaces = useSelector(state => state.places.filteredPlaces);
-
+    
     const displayedPlaces = availablePlaces.filter(
         place => place.categoryId.indexOf(catId) >=0);
     if (displayedPlaces.length === 0 || displayedPlaces === null){
@@ -40,14 +38,7 @@ CategoryEatScreen.navigationOptions = navigationData => {
     
     return {
         headerTitle: selectedCategory.title ,
-        headerRight: () => <Header />
-        //burger menu
-        // headerLeft:  () =>
-        //     <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        //         <Item title="Menu" iconName='ios-menu' onPress={() => {
-        //             navigationData.navigation.toggleDrawer();
-        //         }} />
-        //     </HeaderButtons>     
+        headerRight: () => <Header />  
     };
 };
 
