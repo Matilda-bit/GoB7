@@ -37,21 +37,21 @@ const FiltersScreen = props => {
     //const [isClosesPlace, setIsClosesPlace] = useState(false);
     const [isOpenShabbath, setIsOpenShabbath] = useState(false);
     const [isOpenNow, setIsOpenNow] = useState(false);
-    const [isVegan, setIsVegan] = useState(false);
-    const [isVegetarian, setIsVegetarian] = useState(false);
-    const [isKosher, setIsKosher] = useState(false);
-    const [isNotKosher, setIsNotKosher] = useState(false);
-    const [isCafe, setIsCafe] = useState(false);
-    const [isRestaurant, setIsRestaurant] = useState(false);
-    const [isDelivery, setIsDelivery] = useState(false);
-    const [isTakeAway, setIsTakeAway] = useState(false);
-    const [isFastFood, setIsFastFood] = useState(false);
-    const [isGrill, setIsGrill] = useState(false);
-    const [isSushi, setIsSushi] = useState(false);
-    const [isItalian, setIsItalian] = useState(false);
-    const [isAsian, setIsAsian] = useState(false);
-    const [isEuropean, setIsEuropean] = useState(false);
-    const [isIndian, setIsIndian] = useState(false);
+    // const [isVegan, setIsVegan] = useState(false);
+    // const [isVegetarian, setIsVegetarian] = useState(false);
+    // const [isKosher, setIsKosher] = useState(false);
+    // const [isNotKosher, setIsNotKosher] = useState(false);
+    // const [isCafe, setIsCafe] = useState(false);
+    // const [isRestaurant, setIsRestaurant] = useState(false);
+    // const [isDelivery, setIsDelivery] = useState(false);
+    // const [isTakeAway, setIsTakeAway] = useState(false);
+    // const [isFastFood, setIsFastFood] = useState(false);
+    // const [isGrill, setIsGrill] = useState(false);
+    // const [isSushi, setIsSushi] = useState(false);
+    // const [isItalian, setIsItalian] = useState(false);
+    // const [isAsian, setIsAsian] = useState(false);
+    // const [isEuropean, setIsEuropean] = useState(false);
+    // const [isIndian, setIsIndian] = useState(false);
     
 
     const dispatch = useDispatch();
@@ -60,21 +60,21 @@ const FiltersScreen = props => {
         const appliedFilters = {
             openShabbath: isOpenShabbath,
             openNow: isOpenNow,
-            vegan: isVegan,
-            vegetarian: isVegetarian,
-            kosher: isKosher,
-            notKosher: isNotKosher,
-            cafe: isCafe,
-            restaurant: isRestaurant,
-            delivery: isDelivery,
-            takeAway: isTakeAway,
-            fastFood: isFastFood,
-            grill: isGrill,
-            sushi: isSushi,
-            italian: isItalian,
-            asian: isAsian,
-            european: isEuropean,
-            indian: isIndian
+            // vegan: isVegan,
+            // vegetarian: isVegetarian,
+            // kosher: isKosher,
+            // notKosher: isNotKosher,
+            // cafe: isCafe,
+            // restaurant: isRestaurant,
+            // delivery: isDelivery,
+            // takeAway: isTakeAway,
+            // fastFood: isFastFood,
+            // grill: isGrill,
+            // sushi: isSushi,
+            // italian: isItalian,
+            // asian: isAsian,
+            // european: isEuropean,
+            // indian: isIndian
 
             //need to add closes places
             //closesPlace: isClosesPlace
@@ -82,7 +82,7 @@ const FiltersScreen = props => {
         };
         dispatch(setFilters(appliedFilters));
         //console.log(appliedFilters);
-    }, [isOpenShabbath, isOpenNow, isVegan, isVegetarian, isKosher, isNotKosher, isCafe, isRestaurant, isDelivery, isTakeAway, isFastFood, isGrill, isSushi, isItalian, isAsian, isEuropean, isIndian, dispatch]);
+    }, [isOpenShabbath, isOpenNow, dispatch]);
     // isOpenNow - must to be the same name from /reducers/places in 'if'
 
     useEffect(() => {
@@ -104,7 +104,7 @@ const FiltersScreen = props => {
                 state={isOpenShabbath} 
                 onChange={newValue => setIsOpenShabbath(newValue)}
             />
-            <FilterSwitch 
+            {/* <FilterSwitch 
                 label='vegan' 
                 state={isVegan} 
                 onChange={newValue => setIsVegan(newValue)}
@@ -178,11 +178,6 @@ const FiltersScreen = props => {
                 label='indian' 
                 state={isIndian} 
                 onChange={newValue => setIsIndian(newValue)}
-            />
-            {/* <FilterSwitch 
-                label='by closest place' 
-                state={isClosesPlace} 
-                onChange={newValue => setIsClosesPlace(newValue)}
             /> */}
             
         </View>
