@@ -139,7 +139,8 @@ const PlaceFavTabNavigator = Platform.OS === 'android'
 //new addition 09.03.20
 const UserPlacesNavigator = createStackNavigator(
     {
-        UserPlaces: UserPlacesScreen
+        UserPlaces: UserPlacesScreen,
+        EditPlace: EditPlacesScreen
     },
     {
         navigationOptions: {
