@@ -9,7 +9,7 @@ export const deletePlace = id => {
   };
   
 
-  export const createPlace = (title, imageUrl) => {
+  export const createPlace = (categoryId, title, imageUrl, location, openingHours) => {
     return async dispatch => {
       // any async code you want!
       const response = await fetch('https://my-project-fdbf6.firebaseio.com/places.json', {
@@ -18,18 +18,26 @@ export const deletePlace = id => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          title, 
-          imageUrl
+          categoryId,
+          title,
+          imageUrl,
+          location,
+          openingHours
         })
       });
-  
-      //const resData = await response.json();
+      //unpacked data
+      const resData = await response.json();
       //console.log(resData);
+      
       dispatch({
       type: CREATE_PLACE,
       placeData: {
+        id: resData.name,
+        categoryId,
         title,
         imageUrl,
+        location,
+        openingHours
         }  
       });  
     };  
