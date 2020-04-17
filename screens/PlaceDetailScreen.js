@@ -44,8 +44,9 @@ const PlaceDetailScreen = props => {
             </View>
       
             <View style={styles.myDetail}>          
-                <WhiteBodyText>category:  {selectedItem.categoryId.map(categoryId => <WhiteBodyText key={categoryId}>{categoryId} </WhiteBodyText>)}</WhiteBodyText>
-               
+                {/* <WhiteBodyText>category:  {selectedItem.categoryId.map(categoryId => <WhiteBodyText key={categoryId}>{categoryId} </WhiteBodyText>)}</WhiteBodyText>
+                */}
+                <WhiteBodyText>category:  {selectedItem.categoryId}</WhiteBodyText>
                 <WhiteBodyText>address: {selectedItem.location}, Be'er sheva</WhiteBodyText>
                 <WhiteBodyText>opening hours: {selectedItem.openingHours.toUpperCase()}</WhiteBodyText> 
             </View> 
