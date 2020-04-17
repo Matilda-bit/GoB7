@@ -88,18 +88,7 @@ const placesReducer = (state = initialState, action) => {
             });
             
         return {...state, filteredPlaces: updateFilteredPlaces};
-        // case CREATE_PLACE:
-        //     const newPlace = new Place(
-        //         new Date().toString(),
-        //         'u1',
-        //         action.placeData.title,
-        //         action.placeData.imageUrl
-        //     );
-        //     return {
-        //         ...state,
-        //         availablePlaces: state.availablePlaces.concat(newPlace),
-        //         userPlaces: state.userPlaces.concat(newPlace)
-        //     };
+        
         case CREATE_PLACE:
             // console.log('TEST');
             // console.log(action.placeData.categoryId);
@@ -109,7 +98,7 @@ const placesReducer = (state = initialState, action) => {
             // console.log(action.placeData.openingHours);
             const newPlace = new Place(
                 action.placeData.id,
-                action.placeData.categoryId,
+                [action.placeData.categoryId],
                 action.placeData.title,
                 action.placeData.imageUrl,
                 action.placeData.location,
@@ -127,30 +116,42 @@ const placesReducer = (state = initialState, action) => {
             const placeIndex = state.userPlaces.findIndex(
                 prod => prod.id === action.placeId
             );
+
             const updatedPlace = new Place(
-                //action.placeId,
-                state.userPlaces[placeIndex].ownerId,
+                action.placeId,
+                //state.userPlaces[placeIndex].ownerId,
+                action.placeData.categoryId,
                 action.placeData.title,
                 action.placeData.imageUrl,
                 action.placeData.location,
                 action.placeData.openingHours,
             );
+
             const updatedUserPlaces = [...state.userPlaces];
             updatedUserPlaces[placeIndex] = updatedPlace;
             const availablePlaceIndex = state.places.findIndex(
                 prod => prod.id === action.placeId
             );
+
             const updatedAvailablePlaces = [...state.places];
             updatedAvailablePlaces[availablePlaceIndex] = updatedPlace;
+            const updatedFilteredPlaces = [...state.filteredPlaces];
+            updatedFilteredPlaces[availablePlaceIndex] = updatedPlace;
             return {
                 ...state,
                 places: updatedAvailablePlaces,
+                filteredPlaces: updatedFilteredPlaces,
                 userPlaces: updatedUserPlaces
             };
+
         case DELETE_PLACE:
+            console.log('DELETE');
             return {
                 ...state,
                 userPlaces: state.userPlaces.filter(
+                place => place.id !== action.placeId
+                ),
+                filteredPlaces: state.filteredPlaces.filter(
                 place => place.id !== action.placeId
                 ),
                 places: state.places.filter(
