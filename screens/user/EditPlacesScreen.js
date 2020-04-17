@@ -42,7 +42,10 @@ const formReducer = (state, action) => {
 
   
 const EditPlacesScreen = props => {
-    const id = props.navigation.getParam('id');
+  const catId = props.navigation.getParam('categoryId');
+  //console.log(catId);
+  const id = props.navigation.getParam('placeId');
+  
   const editedPlace = useSelector(state =>
     state.places.userPlaces.find(prod => prod.id === id)
   );
@@ -51,16 +54,25 @@ const EditPlacesScreen = props => {
   const [formState, dispatchFormState] = useReducer(formReducer, {
     inputValues: {
       title: editedPlace ? editedPlace.title : '',
-      imageUrl: editedPlace ? editedPlace.imageUrl : ''
+      imageUrl: editedPlace ? editedPlace.imageUrl : '',
+      location: editedPlace ? editedPlace.location : '',
+      openingHours: editedPlace ? editedPlace.openingHours : ''
     },
     inputValidities: {
       title: editedPlace ? true : false,
-      imageUrl: editedPlace ? true : false
+      imageUrl: editedPlace ? true : false,
+      location: editedPlace ? true : false,
+      openingHours: editedPlace ? true : false,
     },
     formIsValid: editedPlace ? true : false
   });
 
   const submitHandler = useCallback(() => {
+    // console.log(formState.title);
+    // console.log(formState.imageUrl);
+    // console.log(formState.location);
+    // console.log(formState.openingHours);
+   
     if (!formState.formIsValid) {
       Alert.alert('Wrong input!', 'Please check the errors in the form.', [
         { text: 'Okay' }
@@ -71,22 +83,27 @@ const EditPlacesScreen = props => {
       dispatch(
         placesActions.updatePlace(
           id,
+          catId,
           formState.inputValues.title,
-          // formState.inputValues.description,
-          formState.inputValues.imageUrl
+          formState.inputValues.imageUrl,
+          formState.inputValues.location,
+          formState.inputValues.openingHours
         )
       );
     } else {
       dispatch(
         placesActions.createPlace(
+          catId,
           formState.inputValues.title,
-          // formState.inputValues.description,
-          formState.inputValues.imageUrl
+          formState.inputValues.imageUrl,
+          formState.inputValues.location,
+          formState.inputValues.openingHours,
+  
         )
       );
     }
     props.navigation.goBack();
-  }, [dispatch, id, formState]);
+  }, [dispatch, catId, id, formState]);
 
   useEffect(() => {
     props.navigation.setParams({ submit: submitHandler });
@@ -136,6 +153,28 @@ const EditPlacesScreen = props => {
             initiallyValid={!!editedPlace}
             required
           />
+          <Input
+            id="location"
+            label="Location"
+            errorText="Please enter a valid address!"
+            keyboardType="default"
+            returnKeyType="next"
+            onInputChange={inputChangeHandler}
+            initialValue={editedPlace ? editedPlace.location : ''}
+            initiallyValid={!!editedPlace}
+            required
+          />
+          <Input
+            id="openingHours"
+            label="opening Hours"
+            errorText="Please enter a opening hours!"
+            keyboardType="default"
+            returnKeyType="next"
+            onInputChange={inputChangeHandler}
+            initialValue={editedPlace ? editedPlace.openingHours : ''}
+            initiallyValid={!!editedPlace}
+            required
+          />
           {/* <Input
             id="description"
             label="Description"
@@ -160,7 +199,7 @@ const EditPlacesScreen = props => {
 EditPlacesScreen.navigationOptions = navData => {
   const submitFn = navData.navigation.getParam('submit');
   return {
-    headerTitle: navData.navigation.getParam('id')
+    headerTitle: navData.navigation.getParam('placeId')
       ? 'Edit Place'
       : 'Add Place',
     headerRight: () => (
