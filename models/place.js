@@ -53,6 +53,7 @@ class Place {
     constructor(
         id,
         categoryId,
+        ownerId,
         title,
         imageUrl,
         location,
@@ -62,6 +63,7 @@ class Place {
         ) {
             this.id = id;
             this.categoryId = categoryId;
+            this.ownerId = ownerId;
             this.title = title;
             this.imageUrl = imageUrl;
             this.location = location;
