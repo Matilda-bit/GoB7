@@ -66,15 +66,13 @@ const placesReducer = (state = initialState, action) => {
 
             );
 
-            // const updatedUserPlaces = [...state.userPlaces];
-            // updatedUserPlaces[placeIndex] = updatedPlace;
+            const updatedUserPlaces = [...state.userPlaces];
+            updatedUserPlaces[placeIndex] = updatedPlace;
 
             const availablePlaceIndex = state.places.findIndex(
                 prod => prod.id === action.placeId
             );
-            const updatedUserPlaces = [...state.userPlaces];
-            updatedUserPlaces[availablePlaceIndex] = updatedPlace;
-   
+    
             const updatedAvailablePlaces = [...state.places];
             updatedAvailablePlaces[availablePlaceIndex] = updatedPlace;
 
