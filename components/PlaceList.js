@@ -5,8 +5,9 @@ import Screenbk from '../constants/default-styles';
 import { useSelector } from 'react-redux';
 
 const PlaceList = props => {
-    const favoritePlaces = useSelector(state => state.places.favoritePlaces);
 
+    const favoritePlaces = useSelector(state => state.places.favoritePlaces);
+    
     //data for my FlatList in renderItem
     const renderMyItem = itemData => {
         const isFavorite = favoritePlaces.some(place => place.id === itemData.item.id);
@@ -35,7 +36,7 @@ const PlaceList = props => {
     return  (<View style = {{...styles.list, ...Screenbk.screen}}>
     <FlatList 
         data={props.listData} 
-        keyExtractor={(item,idex) => item.id } 
+        keyExtractor={(item,index) => item.id } 
         renderItem={renderMyItem}
         style={{width: '95%'}}
         />
