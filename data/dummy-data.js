@@ -26,7 +26,7 @@ export const CATEGORIES = [
 export const PLACE = [
     new Place(
         'p1',
-        ['food'],
+        'food',
         '',
         'Caldo Gourmet Pizza Bar',
         'https://caldo.co.il/uploads/images/image-2320180515162615_20190207101140.jpg',
@@ -52,7 +52,7 @@ export const PLACE = [
     ),
     new Place(
         'p2',
-        ['food','bars & pubs'],
+        'food',
         '',
         'Sifriya',
         'https://hasifria.com/wp-content/uploads/2016/12/14114792_1244442835606710_5278934233671757650_o.jpg',
@@ -78,7 +78,7 @@ export const PLACE = [
     ),
     new Place(
         'p3',
-        ['food','bars & pubs'],
+        'food',
         '',
         'Nafis',
         'https://www.nafis.co.il/wp-content/uploads/2017/08/p1.jpg',
@@ -104,7 +104,7 @@ export const PLACE = [
     ),
     new Place(
         'p4',
-        ['food'],
+        'food',
         '',
         'Goomba',
         'https://lh5.googleusercontent.com/p/AF1QipN799OydWhv4jzaV-tEXorRV5hMiaB4yb1NshTH=s507-k-no',
@@ -130,7 +130,7 @@ export const PLACE = [
     ),
     new Place(
         'p5',
-        ['parks'],
+        'parks',
         '',
         'Australian Soldier Park',
         'https://lh5.googleusercontent.com/p/AF1QipOBh0SY59ZLelZ9J40jeCxx_MlWW5rFtdel3rS4=w203-h114-k-no',
@@ -150,7 +150,7 @@ export const PLACE = [
     ),
     new Place(
         'p6',
-        ['parks'],
+        'parks',
         '',
         'Be\'er Sheva River Park',
         'https://lh5.googleusercontent.com/p/AF1QipOClEh51pxlZERb5_nyDRaL4T4dfh5wK3PvS32K=s653-k-no',
@@ -170,7 +170,7 @@ export const PLACE = [
     ),
     new Place(
         'p7',
-        ['parks'],
+        'parks',
         '',
         'Rambam Park',
         'https://lh5.googleusercontent.com/p/AF1QipP3_iDIcc_MviQmJ2bO4Dwkg2u_VtIiwZuI8ez6=s676-p-k-no',
@@ -190,7 +190,7 @@ export const PLACE = [
     ),
     new Place(
         'p8',
-        ['bars & pubs'],
+        'bars & pubs',
         '',
         'Rosa Bar',
         'https://www.google.com/maps/uv?hl=en&pb=!1s0x15026667717193d9%3A0x6b2baf72394de95f!3m1!7e115!4shttps%3A%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOAN18LlXzjnEEwKYXv4N8sdQL9Gxnwq5fM4OwI%3Dw390-h262-n-k-no!5sBar%20-%20Google%20Search!15sCAQ&imagekey=!1e10!2sAF1QipOAN18LlXzjnEEwKYXv4N8sdQL9Gxnwq5fM4OwI#',
@@ -209,7 +209,7 @@ export const PLACE = [
     ),
     new Place(
         'p9',
-        ['food'],
+        'food',
         '',
         'Kampai - קמפאי',
         'https://eatintlv.com/wp-content/uploads/2017/11/Kampai-3.jpg',
@@ -235,7 +235,7 @@ export const PLACE = [
     ),
     new Place(
         'p10',
-        ['bars & pubs'],
+        'bars & pubs',
         '',
         'BarBaSaba',
         'https://lh5.googleusercontent.com/p/AF1QipNOQBz-pSIO8RE51IHsfpiPD2wrjohTFTo_QFHz=s676-k-no',
@@ -254,7 +254,7 @@ export const PLACE = [
     ),
     new Place(
         'p11',
-        ['city sight'],
+        'city sight',
         '',
         'Tel Be’er Sheba',
         'https://upload.wikimedia.org/wikipedia/commons/6/62/Tel_Be%27er_Sheva_Overview_2007041.JPG',
@@ -273,7 +273,7 @@ export const PLACE = [
     ),
     new Place(
         'p12',
-        ['parks','city sight'],
+        'city sight',
         '',
         'Carasso Science Park',
         'https://www.israel-in-photos.com/wp-content/uploads/2018/10/Carasso-Science-Park-in-Beersheba-2.jpg',
@@ -293,7 +293,7 @@ export const PLACE = [
     ),
     new Place(
         'p13',
-        ['city sight'],
+        'city sight',
         '',
         'Negev Museum of Art',
         'https://media-cdn.tripadvisor.com/media/photo-s/0d/2c/d8/63/negev-museum-of-art-first.jpg',
@@ -312,7 +312,7 @@ export const PLACE = [
     ),
     new Place(
         'p14',
-        ['trash'],
+        'trash',
         '',
         'green',
         'http://www.dolav.co.il/media/1427490/wc_240_main_green.jpg',
@@ -331,7 +331,7 @@ export const PLACE = [
     ),
     new Place(
         'p15',
-        ['trash'],
+        'trash',
         '',
         'green',
         'http://www.tmir.org.il/download/pictures/where-pachim.jpg',
@@ -350,7 +350,7 @@ export const PLACE = [
     ),
     new Place(
         'p16',
-        ['trash'],
+        'trash',
         '',
         'green',
         'http://www.tmir.org.il/download/pictures/where-pachim.jpg',
@@ -369,7 +369,7 @@ export const PLACE = [
     ),
     new Place(
         'p17',
-        ['shopping'],
+        'shopping',
         '',
         'עופר גרנד קניון באר שבע',
         'https://lh5.googleusercontent.com/p/AF1QipOJXcAeb5sCnDwS33vAi5fgS96Tr3EVwJnSSh9H=s648-k-no',
@@ -388,7 +388,7 @@ export const PLACE = [
     ),
     new Place(
         'p18',
-        ['shopping'],
+        'shopping',
         '',
         'IKEA',
         'https://lh5.googleusercontent.com/p/AF1QipMxb7N1WkyFSvlvTFqUnah2Yh3N4jYsdt-BhpiD=s773-k-no',
@@ -407,7 +407,7 @@ export const PLACE = [
     ),
     new Place(
         'p19',
-        ['shopping'],
+        'shopping',
         '',
         'Azrieli Negev Mall',
         'https://lh5.googleusercontent.com/p/AF1QipM4whQYHwJOeHdUtECeFQgWAXMLhMTUfJGTOKuC=s1016-k-no',
@@ -426,7 +426,7 @@ export const PLACE = [
     ),
     new Place(
         'p20',
-        ['clubs'],
+        'clubs',
         '',
         'Forum Night Club',
         'https://scontent.ftlv2-1.fna.fbcdn.net/v/t1.0-9/79986682_10156465162971736_6609777269214806016_o.jpg?_nc_cat=109&_nc_ohc=ofm8VH3xQRQAQlicEJuFb3IkrlMLcajqlCGnv3E3X2O4BKe1N2uPf9ZQw&_nc_ht=scontent.ftlv2-1.fna&oh=e98be2f1c2861883a562075dbe4a50f3&oe=5EA40C97',
@@ -445,7 +445,7 @@ export const PLACE = [
     ),
     new Place(
         'p21',
-        ['clubs'],
+        'clubs',
         '',
         'Club Nika B7',
         'https://lh5.googleusercontent.com/p/AF1QipPeuEy842JpUH3DbY4wIgN2s3QyzbCInScmD9nh=s634-k-no',
@@ -464,7 +464,7 @@ export const PLACE = [
     ),
     new Place(
         'p22',
-        ['clubs'],
+        'clubs',
         '',
         'Baraka Club',
         'https://lh5.googleusercontent.com/p/AF1QipMZeErHp1q3k28lW7mZKzs3zxTC7nSU1PEzSN8U=s773-k-no',
