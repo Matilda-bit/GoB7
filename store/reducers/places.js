@@ -7,7 +7,7 @@ import {
     DELETE_PLACE,
     CREATE_PLACE,
     UPDATE_PLACE,
-    //SET_PLACES
+    SET_PLACES
 } from '../actions/places';
 
 const initialState = {
@@ -15,24 +15,27 @@ const initialState = {
     places: PLACE,
     filteredPlaces: PLACE,
     favoritePlaces: [],
-    //userPlaces: PLACE.filter(id => id.ownerId === 'u1')
-    userPlaces: []
+    userPlaces: PLACE.filter(id => id.ownerId === 'u1')
+    //userPlaces: []
 
 };
 
 
 const placesReducer = (state = initialState, action) => {
    switch (action.type){
-        // case SET_PLACES:
-        //     return {
-        //         places: action.places,
-        //         userPlaces: action.places.filter(id => id.ownerId === 'u1')
-        //     };
+        case SET_PLACES:
+            return {
+                places: state.places.concat(action.places),
+                filteredPlaces: state.places.concat(action.places),
+                //places: action.places,
+                userPlaces: action.places.filter(id => id.ownerId === 'u1'),
+                favoritePlaces: state.favoritePlaces
+            };
        
         case CREATE_PLACE:
             const newPlace = new Place(
                 action.placeData.id,
-                [action.placeData.categoryId],
+                action.placeData.categoryId,
                 'u1',
                 action.placeData.title,
                 action.placeData.imageUrl,
@@ -86,7 +89,7 @@ const placesReducer = (state = initialState, action) => {
             };
 
         case DELETE_PLACE:
-            console.log('DELETE');
+           //console.log('DELETE');
             return {
                 ...state,
                 userPlaces: state.userPlaces.filter(
