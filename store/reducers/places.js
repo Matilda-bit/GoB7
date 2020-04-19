@@ -1,17 +1,21 @@
+import Place from '../../models/place';
+
 import { PLACE } from '../../data/dummy-data';
 import { 
     TOGGLE_FAVORITE, 
     SET_FILTERS, 
     DELETE_PLACE,
     CREATE_PLACE,
-    UPDATE_PLACE 
+    UPDATE_PLACE,
+    //SET_PLACES
 } from '../actions/places';
-import Place from '../../models/place';
+
 const initialState = {
     //category: CATEGORIES,
     places: PLACE,
     filteredPlaces: PLACE,
     favoritePlaces: [],
+    //userPlaces: PLACE.filter(id => id.ownerId === 'u1')
     userPlaces: []
 
 };
@@ -19,6 +23,85 @@ const initialState = {
 
 const placesReducer = (state = initialState, action) => {
    switch (action.type){
+        // case SET_PLACES:
+        //     return {
+        //         places: action.places,
+        //         userPlaces: action.places.filter(id => id.ownerId === 'u1')
+        //     };
+       
+        case CREATE_PLACE:
+            const newPlace = new Place(
+                action.placeData.id,
+                [action.placeData.categoryId],
+                'u1',
+                action.placeData.title,
+                action.placeData.imageUrl,
+                action.placeData.location,
+                action.placeData.openingHours,
+                false,
+                false
+            );
+            return {
+                ...state,
+                places: state.places.concat(newPlace),
+                filteredPlaces: state.places.concat(newPlace),
+                userPlaces: state.userPlaces.concat(newPlace)
+            };
+        case UPDATE_PLACE:
+            const placeIndex = state.userPlaces.findIndex(
+                prod => prod.id === action.placeId
+            );
+
+            const updatedPlace = new Place(
+                action.placeId,
+                action.placeData.categoryId,
+                //state.userPlaces[placeIndex].categoryId,
+                'u1',
+                action.placeData.title,
+                action.placeData.imageUrl,
+                action.placeData.location,
+                action.placeData.openingHours,
+                state.userPlaces[placeIndex].isOpenShabbath,
+                state.userPlaces[placeIndex].isOpenNow,
+
+            );
+
+            // const updatedUserPlaces = [...state.userPlaces];
+            // updatedUserPlaces[placeIndex] = updatedPlace;
+
+            const availablePlaceIndex = state.places.findIndex(
+                prod => prod.id === action.placeId
+            );
+            const updatedUserPlaces = [...state.userPlaces];
+            updatedUserPlaces[availablePlaceIndex] = updatedPlace;
+   
+            const updatedAvailablePlaces = [...state.places];
+            updatedAvailablePlaces[availablePlaceIndex] = updatedPlace;
+
+            const updatedFilteredPlaces = [...state.filteredPlaces];
+            updatedFilteredPlaces[availablePlaceIndex] = updatedPlace;
+            return {
+                ...state,
+                places: updatedAvailablePlaces,
+                filteredPlaces: updatedFilteredPlaces,
+                userPlaces: updatedUserPlaces
+            };
+
+        case DELETE_PLACE:
+            console.log('DELETE');
+            return {
+                ...state,
+                userPlaces: state.userPlaces.filter(
+                place => place.id !== action.placeId
+                ),
+                filteredPlaces: state.filteredPlaces.filter(
+                place => place.id !== action.placeId
+                ),
+                places: state.places.filter(
+                place => place.id !== action.placeId
+                )
+            };
+
         case TOGGLE_FAVORITE:
             const existingIndex = state.favoritePlaces.findIndex(place => place.id === action.placeId);
             if (existingIndex >= 0){
@@ -29,9 +112,9 @@ const placesReducer = (state = initialState, action) => {
                     const place = state.places.find(place => place.id === action.placeId);
                     return {...state, favoritePlaces: state.favoritePlaces.concat(place) };
             }
-        
         case SET_FILTERS:
             const appliedFilters = action.filters;
+    
             const updateFilteredPlaces = state.places.filter(place => {
                 if (appliedFilters.openShabbath && !place.isOpenShabbath){
                     return false;
@@ -89,75 +172,7 @@ const placesReducer = (state = initialState, action) => {
             
         return {...state, filteredPlaces: updateFilteredPlaces};
         
-        case CREATE_PLACE:
-            // console.log('TEST');
-            // console.log(action.placeData.categoryId);
-            // console.log(action.placeData.title);
-            // console.log(action.placeData.imageUrl);
-            // console.log(action.placeData.location);
-            // console.log(action.placeData.openingHours);
-            const newPlace = new Place(
-                action.placeData.id,
-                [action.placeData.categoryId],
-                action.placeData.title,
-                action.placeData.imageUrl,
-                action.placeData.location,
-                action.placeData.openingHours,
-                false,
-                false
-            );
-            return {
-                ...state,
-                places: state.places.concat(newPlace),
-                filteredPlaces: state.places.concat(newPlace),
-                userPlaces: state.userPlaces.concat(newPlace)
-            };
-        case UPDATE_PLACE:
-            const placeIndex = state.userPlaces.findIndex(
-                prod => prod.id === action.placeId
-            );
-
-            const updatedPlace = new Place(
-                action.placeId,
-                //state.userPlaces[placeIndex].ownerId,
-                action.placeData.categoryId,
-                action.placeData.title,
-                action.placeData.imageUrl,
-                action.placeData.location,
-                action.placeData.openingHours,
-            );
-
-            const updatedUserPlaces = [...state.userPlaces];
-            updatedUserPlaces[placeIndex] = updatedPlace;
-            const availablePlaceIndex = state.places.findIndex(
-                prod => prod.id === action.placeId
-            );
-
-            const updatedAvailablePlaces = [...state.places];
-            updatedAvailablePlaces[availablePlaceIndex] = updatedPlace;
-            const updatedFilteredPlaces = [...state.filteredPlaces];
-            updatedFilteredPlaces[availablePlaceIndex] = updatedPlace;
-            return {
-                ...state,
-                places: updatedAvailablePlaces,
-                filteredPlaces: updatedFilteredPlaces,
-                userPlaces: updatedUserPlaces
-            };
-
-        case DELETE_PLACE:
-            console.log('DELETE');
-            return {
-                ...state,
-                userPlaces: state.userPlaces.filter(
-                place => place.id !== action.placeId
-                ),
-                filteredPlaces: state.filteredPlaces.filter(
-                place => place.id !== action.placeId
-                ),
-                places: state.places.filter(
-                place => place.id !== action.placeId
-                )
-            };
+        
         default: 
             return state;
     }
