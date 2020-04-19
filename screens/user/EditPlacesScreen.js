@@ -45,7 +45,7 @@ const EditPlacesScreen = props => {
   const catId = props.navigation.getParam('categoryId');
   //console.log(catId);
   const id = props.navigation.getParam('placeId');
-  
+  //console.log(id);
   const editedPlace = useSelector(state =>
     state.places.userPlaces.find(prod => prod.id === id)
   );
@@ -83,7 +83,7 @@ const EditPlacesScreen = props => {
           formState.inputValues.title,
           formState.inputValues.imageUrl,
           formState.inputValues.location,
-          formState.inputValues.openingHours
+          formState.inputValues.openingHours,
         )
       );
     } else {
@@ -134,7 +134,7 @@ const EditPlacesScreen = props => {
             autoCorrect
             returnKeyType="next"
             onInputChange={inputChangeHandler}
-            initialValue={editedPlace ? editedPlace.title : ''}
+            initialValue={editedPlace ? editedPlace.title : 'Test '}
             initiallyValid={!!editedPlace}
             required
           />
@@ -145,7 +145,7 @@ const EditPlacesScreen = props => {
             keyboardType="default"
             returnKeyType="next"
             onInputChange={inputChangeHandler}
-            initialValue={editedPlace ? editedPlace.imageUrl : ''}
+            initialValue={editedPlace ? editedPlace.imageUrl : 'https://s3.amazonaws.com/cb-talent-development-cortex-prod/media/attachments/000/001/682/original/shutterstock_248597491_IntTest.jpg?1452861845'}
             initiallyValid={!!editedPlace}
             required
           />
@@ -156,7 +156,7 @@ const EditPlacesScreen = props => {
             keyboardType="default"
             returnKeyType="next"
             onInputChange={inputChangeHandler}
-            initialValue={editedPlace ? editedPlace.location : ''}
+            initialValue={editedPlace ? editedPlace.location : 'Beer Sheva'}
             initiallyValid={!!editedPlace}
             required
           />
@@ -167,7 +167,7 @@ const EditPlacesScreen = props => {
             keyboardType="default"
             returnKeyType="next"
             onInputChange={inputChangeHandler}
-            initialValue={editedPlace ? editedPlace.openingHours : ''}
+            initialValue={editedPlace ? editedPlace.openingHours : '24/7'}
             initiallyValid={!!editedPlace}
             required
           />
