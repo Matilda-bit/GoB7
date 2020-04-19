@@ -18,7 +18,7 @@ const UserPlacesScreen = props => {
     //pass data from store/reducer/places
     const userPlaces = useSelector(state => state.places.userPlaces);
     const dispatch = useDispatch();
-
+    
 
     if (userPlaces.length === 0 || userPlaces === null){
       return <View style={styles.content}>
@@ -47,7 +47,7 @@ const UserPlacesScreen = props => {
     return (
       <FlatList
           data={userPlaces}
-          keyExtractor={item => item.id}
+          keyExtractor={(item,index) => item.id}
           renderItem={itemData => (
             <ProductItem
               image={itemData.item.imageUrl}
