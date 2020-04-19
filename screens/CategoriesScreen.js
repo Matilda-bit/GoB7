@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {  
     FlatList
 } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import { CATEGORIES } from '../data/dummy-data';
 import Header from '../components/Header';
 import HeaderButton from '../components/UI/HeaderButton';
 import CategoryGridTile from '../components/CategoryGridTile';
+import * as placesActions from '../store/actions/places';
 
 const CategoriesScreen = props => {
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(placesActions.fetchPlaces());
+    }, [ dispatch ]);
+
     //console.log(props);
     //renderGridItem must be here for access to my props
     const renderGridItem = itemData => {
