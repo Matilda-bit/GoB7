@@ -14,32 +14,42 @@ export const fetchPlaces = () => {
     // any async code you want!
     //method: 'GET',
     //don't need 'header' and 'body' anymore
-    const response = await fetch(
-      'https://my-project-fdbf6.firebaseio.com/places.json'
-      );
+    try {
+      const response = await fetch(
+        'https://my-project-fdbf6.firebaseio.com/places.json'
+        );
 
-    //unpacked data
-    const resData = await response.json();
-    //console.log(resData);
-    const loadedPlaces = [];
-
-    for (const key in resData){
-      loadedPlaces.push(
-        new Place(
-          key,
-          resData[key].categoryId,
-          'u1',
-          resData[key].title,
-          resData[key].imageUrl,
-          resData[key].location,
-          resData[key].openingHours,
-          false,
-          false,
-        )
-      );
+      //
+      if ( !response.ok ) {
+          throw new Error('Polina something went wrong!');
+      }
+      //unpacked data
+      const resData = await response.json();
+      //console.log(resData);
+      const loadedPlaces = [];
+  
+      for (const key in resData){
+        loadedPlaces.push(
+          new Place(
+            key,
+            resData[key].categoryId,
+            'u1',
+            resData[key].title,
+            resData[key].imageUrl,
+            resData[key].location,
+            resData[key].openingHours,
+            false,
+            false,
+          )
+        );
+      }
+      console.log(resData);
+      dispatch({ type: SET_PLACES, places: loadedPlaces });
+    } catch (err) {
+        // can to add - send to custom analytics server
+        throw err;
     }
-    console.log(resData);
-    dispatch({ type: SET_PLACES, places: loadedPlaces });
+    
   };
 }; 
 
