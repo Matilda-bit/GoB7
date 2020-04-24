@@ -8,7 +8,7 @@ import PlaceList from '../components/PlaceList';
 import Header from '../components/Header';
 import BodyText from '../components/text/BodyText';
 
-const CategoryEatScreen = props => {
+const CategoryPlaceScreen = props => {
  
      //give a value storing in CategoriesScreen
      const catId = props.navigation.getParam('categoryId');
@@ -30,7 +30,7 @@ const CategoryEatScreen = props => {
 };
 
 //add dinamic configure for headerTitle because we need to use props after fun definition
-CategoryEatScreen.navigationOptions = navigationData => {
+CategoryPlaceScreen.navigationOptions = navigationData => {
     //console.log(navigationData);
     const catId= navigationData.navigation.getParam('categoryId');
     
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CategoryEatScreen;
+export default CategoryPlaceScreen;

@@ -2,14 +2,14 @@ import React from 'react'
 import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import { Ionicons } from '@expo/vector-icons';
 
 import CategoriesScreen from '../screens/CategoriesScreen';
-import CategoryEatScreen from '../screens/CategoryEatScreen';
+import CategoryPlaceScreen from '../screens/CategoryPlaceScreen';
 import PlaceDetailScreen from '../screens/PlaceDetailScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 //filter screen 134
@@ -20,6 +20,7 @@ import UserPlacesScreen from '../screens/user/UserPlacesScreen';
 import MapScreen from '../screens/MapScreen';
 import BodyText from '../components/text/BodyText';
 import Colors from '../constants/Colors';
+import AuthScreen from '../screens/user/AuthScreen';
 
 //header style
 const defaultStackNavOptions = {
@@ -45,7 +46,7 @@ const PlacesNavigator = createStackNavigator({
         screen: CategoriesScreen
     },
     Category: {
-        screen: CategoryEatScreen
+        screen: CategoryPlaceScreen
     },
     MyDetail: PlaceDetailScreen
 }, {
@@ -116,7 +117,7 @@ const tabScreenConfig = {
 
 };
 
-const PlaceFavTabNavigator = Platform.OS === 'android' 
+const AppMenuNavigator = Platform.OS === 'android' 
 ? createBottomTabNavigator( tabScreenConfig, {
     tabBarOptions: {
         //activeTintColor: 'white',
@@ -226,9 +227,9 @@ const FilterNavigator = createStackNavigator(
     }
 );
 //my nav list in burger menu
-const MainNavigator = createDrawerNavigator({
-    MyFavs: {
-        screen: PlaceFavTabNavigator, 
+const MenuMainNavigator = createDrawerNavigator({
+    MyCatalog: {
+        screen: AppMenuNavigator, 
         navigationOptions: {
             drawerLabel: "Catalog"
         }
@@ -247,4 +248,10 @@ const MainNavigator = createDrawerNavigator({
     }
     );
 
-export default createAppContainer(MainNavigator);
+const MainNavigator = createSwitchNavigator({
+    Auth: AuthScreen,
+   // App: 
+
+});
+
+export default createAppContainer(MenuMainNavigator);
