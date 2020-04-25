@@ -1,8 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {  
-    FlatList, ActivityIndicator, View, StyleSheet, Text, Button
+    FlatList, 
+    ActivityIndicator, 
+    View, 
+    StyleSheet, 
+    Text, 
+    Button
 } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import { CATEGORIES } from '../data/dummy-data';
@@ -15,6 +20,9 @@ import Colors  from '../constants/Colors';
 const CategoriesScreen = props => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState();
+    const userPlaces = useSelector(state => state.places.userPlaces);
+    console.log('userPlaces: ');
+    console.log(userPlaces);
     const dispatch = useDispatch();
     
 
@@ -29,6 +37,17 @@ const CategoriesScreen = props => {
         }         
         setIsLoading(false);
     }, [ dispatch, setIsLoading, setError]);
+
+    // useEffect(() => {
+    //     const willFocusSub = props.navigation.addListener(
+    //       'willFocus',
+    //       loadPlaces
+    //     );
+    
+    //     return () => {
+    //       willFocusSub.remove();
+    //     };
+    //   }, [loadPlaces]);
 
     useEffect(() => {      
         loadPlaces();
