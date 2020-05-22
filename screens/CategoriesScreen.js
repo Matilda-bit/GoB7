@@ -18,27 +18,27 @@ import * as placesActions from '../store/actions/places';
 //import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Colors  from '../constants/Colors';
 const CategoriesScreen = props => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState();
-    const userPlaces = useSelector(state => state.places.userPlaces);
-    // console.log('userPlaces: ');
-    // console.log(userPlaces);
-    //send an action to router
-    const dispatch = useDispatch();
+    // const [isLoading, setIsLoading] = useState(false);
+    // const [error, setError] = useState();
+    // const userPlaces = useSelector(state => state.places.userPlaces);
+    // // console.log('userPlaces: ');
+    // // console.log(userPlaces);
+    // //send an action to router
+    // const dispatch = useDispatch();
     
 
-    const loadPlaces = useCallback(async () => {
-        //console.log('LOAD PLACES');
-        //to reset
-        setError(null);
-        setIsLoading(true);
-        try {
-            await dispatch(placesActions.fetchPlaces());
-        } catch (err) {
-            setError(err.message);
-        }         
-        setIsLoading(false);
-    }, [ dispatch, setIsLoading, setError]);
+    // const loadPlaces = useCallback(async () => {
+    //     //console.log('LOAD PLACES');
+    //     //to reset
+    //     setError(null);
+    //     setIsLoading(true);
+    //     try {
+    //         await dispatch(placesActions.fetchPlaces());
+    //     } catch (err) {
+    //         setError(err.message);
+    //     }         
+    //     setIsLoading(false);
+    // }, [ dispatch, setIsLoading, setError]);
 
     // useEffect(() => {
     //     const willFocusSub = props.navigation.addListener(
@@ -51,9 +51,9 @@ const CategoriesScreen = props => {
     //     };
     //   }, [loadPlaces]);
 
-    useEffect(() => {      
-        loadPlaces();
-    }, [ dispatch, loadPlaces ]);
+    // useEffect(() => {      
+    //     loadPlaces();
+    // }, [ dispatch, loadPlaces ]);
 
     //console.log(props);
     //renderGridItem must be here for access to my props
@@ -73,19 +73,19 @@ const CategoriesScreen = props => {
             />         
             );
     };
-    if ( error ) {
-        return <View style={styles.centered}>
-            <Text>An error ocurred!!!</Text>
-            <Button title='Try again' onPress={loadPlaces} color={Colors.accentColor}/>
-        </View>
-    }
+    // if ( error ) {
+    //     return <View style={styles.centered}>
+    //         <Text>An error ocurred!!!</Text>
+    //         <Button title='Try again' onPress={loadPlaces} color={Colors.accentColor}/>
+    //     </View>
+    // }
 
-    if (isLoading) { 
-        return <View style={styles.centered}>
-            <ActivityIndicator size='large' color={Colors.accent}/>
-        </View>
+    // if (isLoading) { 
+    //     return <View style={styles.centered}>
+    //         <ActivityIndicator size='large' color={Colors.accent}/>
+    //     </View>
 
-    };
+    // };
     //no places found. Maybe start adding some!
     // if (!isLoading && userPlaces.length === 0) { 
     //     return <View style={styles.centered}>

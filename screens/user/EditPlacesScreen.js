@@ -84,7 +84,7 @@ const EditPlacesScreen = props => {
           formState.inputValues.title,
           formState.inputValues.imageUrl,
           formState.inputValues.location,
-          formState.inputValues.openingHours,
+          formState.inputValues.openingHours
         )
       );
     } else {
