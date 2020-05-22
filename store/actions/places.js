@@ -43,7 +43,7 @@ export const fetchPlaces = () => {
           )
         );
       }
-      console.log(resData);
+      //console.log(resData);
       dispatch({ type: SET_PLACES, places: loadedPlaces });
     } catch (err) {
         // can to add - send to custom analytics server
@@ -54,7 +54,14 @@ export const fetchPlaces = () => {
 }; 
 
 export const deletePlace = id => {
-    return { type: DELETE_PLACE, placeId: id };
+    return async dispatch => {
+      await fetch ('https://my-project-fdbf6.firebaseio.com/places/${id}.json',
+        {
+          method: 'DELETE'
+        }
+      );
+      dispatch({ type: DELETE_PLACE, placeId: id });
+      };
   };
   
 
@@ -93,17 +100,35 @@ export const deletePlace = id => {
   };
 
 export const updatePlace = (id, categoryId, title, imageUrl, location, openingHours) => {
-    return {
+    return async dispach => {
+
+      await fetch(
+        'https://my-project-fdbf6.firebaseio.com/places/${id}.json', 
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({
+          categoryId,
+          title,
+          imageUrl,
+          location,
+          openingHours
+        })
+      });
+
+      dispach({
         type: UPDATE_PLACE,
         placeId: id,
         placeData: {
-          id,
           categoryId,
           title,
           imageUrl,
           location,
           openingHours
         }    
+    });
     };
   };
   

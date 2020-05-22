@@ -20,14 +20,12 @@ const initialState = {
 
 };
 
-
-const placesReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
    switch (action.type){
         case SET_PLACES:
             return {
                 places: state.places.concat(action.places),
                 filteredPlaces: state.places.concat(action.places),
-                //places: action.places,
                 userPlaces: action.places.filter(id => id.ownerId === 'u1'),
                 favoritePlaces: state.favoritePlaces
             };
@@ -52,20 +50,20 @@ const placesReducer = (state = initialState, action) => {
             };
         case UPDATE_PLACE:
             const placeIndex = state.userPlaces.findIndex(
-                prod => prod.id === action.placeId
+                prod => prod.id === action.id
             );
 
             const updatedPlace = new Place(
                 action.placeId,
                 action.placeData.categoryId,
-                //state.userPlaces[placeIndex].categoryId,
                 'u1',
                 action.placeData.title,
                 action.placeData.imageUrl,
                 action.placeData.location,
                 action.placeData.openingHours,
-                state.userPlaces[placeIndex].isOpenShabbath,
-                state.userPlaces[placeIndex].isOpenNow,
+                //state.userPlaces[placeIndex].isOpenShabbath,
+                false,
+                false
 
             );
 
@@ -179,4 +177,3 @@ const placesReducer = (state = initialState, action) => {
     }
 };
 
-export default placesReducer;
