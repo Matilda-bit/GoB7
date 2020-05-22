@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect }from 'react';
 import { FlatList, StyleSheet, View, Text } from 'react-native';
 //import { useSelector } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
@@ -10,6 +10,13 @@ import CategoryGridTile from '../../components/CategoryGridTile';
 import BodyText from '../../components/text/BodyText';
 
 const CategoryChoiceScreen = props => {
+    // const submitHandler = props => {
+    //     props.navigation.goBack();
+    //   };
+
+    // useEffect(() => {
+    //     props.navigation.setParams({ submit: submitHandler });
+    //   }, [submitHandler]);
     const renderGridItem = itemData => {
         return (           
             <CategoryGridTile 
@@ -52,6 +59,7 @@ CategoryChoiceScreen.navigationOptions = (navData) =>{
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <Item title="Menu" iconName='ios-menu' onPress={() => {
                     navData.navigation.toggleDrawer();
+                    //navData.navigation.getParam('submit');
                 }} />
             </HeaderButtons>
     };

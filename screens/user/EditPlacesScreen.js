@@ -16,7 +16,8 @@ import Input from '../../components/UI/Input';
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
 
-
+//add new place pop window after action
+//and after then navigate to myPlaces Screen => UserPlacesScreen
 const formReducer = (state, action) => {
     if (action.type === FORM_INPUT_UPDATE) {
       const updatedValues = {
