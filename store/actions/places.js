@@ -129,7 +129,7 @@ export const updatePlace = (id, categoryId, title, imageUrl, location, openingHo
       if (!response.ok) {
         throw new Error('Something went wrong!');
       }
-      
+
       dispatch({
         type: UPDATE_PLACE,
         //placeId: id,
@@ -146,8 +146,41 @@ export const updatePlace = (id, categoryId, title, imageUrl, location, openingHo
   };
   
 
+// export const toggleFavorite = (id) => {
+//     return {type: TOGGLE_FAVORITE, placeId: id};
+// };
+
 export const toggleFavorite = (id) => {
-    return {type: TOGGLE_FAVORITE, placeId: id};
+    return async dispatch => {
+      const date = new Date();
+      const response = await fetch(
+          'https://my-project-fdbf6.firebaseio.com/favorite/u1.json',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              id,
+              date: date.toISOString()
+            })
+          }
+        );
+    
+        if (!response.ok) {
+          throw new Error('Something went wrong!');
+        }
+    
+        const resData = await response.json();
+
+    dispatch({
+      type: TOGGLE_FAVORITE, 
+      placeId: id,
+      orderData: {  
+      id: resData.name
+      }
+    });
+  };
 };
 
 export const setFilters = filterSettings => {
