@@ -247,11 +247,18 @@ const MenuMainNavigator = createDrawerNavigator({
         }
     }
     );
+    
+const AuthNavigator = createStackNavigator({
+    Auth: AuthScreen,
+   // App: 
 
-// const MainNavigator = createSwitchNavigator({
-//     Auth: AuthScreen,
-//    // App: 
+}, {
+    defaultNavigationOptions: defaultStackNavOptions
+});
+const MainNavigator = createSwitchNavigator({
+    Auth: AuthNavigator,
+    Catalog: PlacesNavigator
 
-// });
+});
 
-export default createAppContainer(MenuMainNavigator);
+export default createAppContainer(MainNavigator);
