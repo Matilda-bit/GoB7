@@ -1,11 +1,12 @@
-import React, { useEffect, useCallback, useReducer } from 'react';
+import React, { useState, useEffect, useCallback, useReducer } from 'react';
 import { 
     View,
     ScrollView,
     StyleSheet, 
     Platform,
     Alert,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    ActivityIndicator
  } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector, useDispatch } from 'react-redux';
@@ -13,6 +14,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import HeaderButton from '../../components/UI/HeaderButton';
 import * as placesActions from '../../store/actions/places';
 import Input from '../../components/UI/Input';
+
+import Colors  from '../../constants/Colors';
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
 
@@ -43,6 +46,10 @@ const formReducer = (state, action) => {
 
   
 const EditPlacesScreen = props => {
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
+
   const catId = props.navigation.getParam('categoryId');
   //console.log(catId);
   const id = props.navigation.getParam('placeId');
@@ -68,7 +75,14 @@ const EditPlacesScreen = props => {
     formIsValid: editedPlace ? true : false
   });
 
-  const submitHandler = useCallback(() => {
+  useEffect(() => {
+    if (error) {
+      Alert.alert('An error occurred!', error, [{ text: 'Okay' }]);
+    }
+  }, [error]);
+
+  
+  const submitHandler = useCallback(async () => {
 
     if (!formState.formIsValid) {
       Alert.alert('Wrong input!', 'Please check the errors in the form.', [
@@ -76,30 +90,40 @@ const EditPlacesScreen = props => {
       ]);
       return;
     }
-    if (editedPlace) {
-      dispatch(
-        placesActions.updatePlace(
-          id,
-          editedPlace.categoryId,
-          formState.inputValues.title,
-          formState.inputValues.imageUrl,
-          formState.inputValues.location,
-          formState.inputValues.openingHours
-        )
-      );
-    } else {
-      dispatch(
-        placesActions.createPlace(
-          catId,
-          formState.inputValues.title,
-          formState.inputValues.imageUrl,
-          formState.inputValues.location,
-          formState.inputValues.openingHours,
-  
-        )
-      );
-    }
-    props.navigation.goBack();
+
+    setError(null);
+    setIsLoading(true);
+    try {
+      if (editedPlace) {
+        await dispatch(
+          placesActions.updatePlace(
+            id,
+            editedPlace.categoryId,
+            formState.inputValues.title,
+            formState.inputValues.imageUrl,
+            formState.inputValues.location,
+            formState.inputValues.openingHours
+          )
+        );
+      } else {
+        await dispatch(
+          placesActions.createPlace(
+            catId,
+            formState.inputValues.title,
+            formState.inputValues.imageUrl,
+            formState.inputValues.location,
+            formState.inputValues.openingHours,
+    
+          )
+        );
+      }
+      props.navigation.goBack();
+      } catch (err) {
+        setError(err.message);
+      }
+      
+    setIsLoading(false);
+    //props.navigation.goBack();
   }, [dispatch, catId, id, formState]);
 
   useEffect(() => {
@@ -118,6 +142,13 @@ const EditPlacesScreen = props => {
     [dispatchFormState]
   );
 
+  if (isLoading) {
+    return (
+      <View style={styles.centered}> 
+        <ActivityIndicator size='large' color={Colors.accent}/>
+      </View>
+    );
+  }
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -216,6 +247,11 @@ EditPlacesScreen.navigationOptions = navData => {
 const styles = StyleSheet.create({
     form: {
       margin: 20
+    },
+    centered: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
     }
   });
 export default EditPlacesScreen;

@@ -56,12 +56,15 @@ export const fetchPlaces = () => {
 export const deletePlace = id => {
   
     return async dispatch => {
-      await fetch (
+      const response = await fetch (
         `https://my-project-fdbf6.firebaseio.com/places/${id}.json`, {
           method: 'DELETE'
         }
       );
-      
+
+      if (!response.ok) {
+        throw new Error('Something went wrong!');
+      }
       dispatch({ type: DELETE_PLACE, id: id });
       };
   };
@@ -107,7 +110,7 @@ export const updatePlace = (id, categoryId, title, imageUrl, location, openingHo
     console.log(title);
   return async dispatch => {
 
-    await fetch(
+    const response = await fetch(
       `https://my-project-fdbf6.firebaseio.com/places/${id}.json`, 
         {
           method: 'PATCH',
@@ -122,6 +125,11 @@ export const updatePlace = (id, categoryId, title, imageUrl, location, openingHo
           openingHours
         })
       });
+
+      if (!response.ok) {
+        throw new Error('Something went wrong!');
+      }
+      
       dispatch({
         type: UPDATE_PLACE,
         //placeId: id,
