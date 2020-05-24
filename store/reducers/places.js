@@ -54,7 +54,7 @@ export default (state = initialState, action) => {
             );
 
             const updatedPlace = new Place(
-                action.placeId,
+                action.id,
                 action.placeData.categoryId,
                 'u1',
                 action.placeData.title,
@@ -71,7 +71,7 @@ export default (state = initialState, action) => {
             updatedUserPlaces[placeIndex] = updatedPlace;
 
             const availablePlaceIndex = state.places.findIndex(
-                prod => prod.id === action.placeId
+                prod => prod.id === action.id
             );
     
             const updatedAvailablePlaces = [...state.places];
@@ -91,13 +91,13 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 userPlaces: state.userPlaces.filter(
-                place => place.id !== action.placeId
+                place => place.id !== action.id
                 ),
                 filteredPlaces: state.filteredPlaces.filter(
-                place => place.id !== action.placeId
+                place => place.id !== action.id
                 ),
                 places: state.places.filter(
-                place => place.id !== action.placeId
+                place => place.id !== action.id
                 )
             };
 
@@ -172,8 +172,9 @@ export default (state = initialState, action) => {
         return {...state, filteredPlaces: updateFilteredPlaces};
         
         
-        default: 
-            return state;
+        // default: 
+        //     return state;
     }
+    return state;
 };
 

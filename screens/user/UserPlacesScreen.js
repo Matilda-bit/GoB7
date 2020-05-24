@@ -37,16 +37,16 @@ const UserPlacesScreen = props => {
 
 
    
-    // useEffect(() => {
-    //     const willFocusSub = props.navigation.addListener(
-    //       'willFocus',
-    //       loadPlaces
-    //     );
+    useEffect(() => {
+        const willFocusSub = props.navigation.addListener(
+          'willFocus',
+          loadPlaces
+        );
     
-    //     return () => {
-    //       willFocusSub.remove();
-    //     };
-    //   }, [loadPlaces]);
+        return () => {
+          willFocusSub.remove();
+        };
+      }, [loadPlaces]);
 
     useEffect(() => {      
       loadPlaces();

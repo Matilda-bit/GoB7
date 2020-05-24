@@ -54,13 +54,15 @@ export const fetchPlaces = () => {
 }; 
 
 export const deletePlace = id => {
+  
     return async dispatch => {
-      await fetch ('https://my-project-fdbf6.firebaseio.com/places/${id}.json',
-        {
+      await fetch (
+        `https://my-project-fdbf6.firebaseio.com/places/${id}.json`, {
           method: 'DELETE'
         }
       );
-      dispatch({ type: DELETE_PLACE, placeId: id });
+      
+      dispatch({ type: DELETE_PLACE, id: id });
       };
   };
   
@@ -68,7 +70,8 @@ export const deletePlace = id => {
   export const createPlace = (categoryId, title, imageUrl, location, openingHours) => {
     return async dispatch => {
       // any async code you want!
-      const response = await fetch('https://my-project-fdbf6.firebaseio.com/places.json', {
+      const response = await fetch(
+        `https://my-project-fdbf6.firebaseio.com/places.json`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -100,10 +103,12 @@ export const deletePlace = id => {
   };
 
 export const updatePlace = (id, categoryId, title, imageUrl, location, openingHours) => {
-    return async dispach => {
+    console.log(id);
+    console.log(title);
+  return async dispatch => {
 
-      await fetch(
-        'https://my-project-fdbf6.firebaseio.com/places/${id}.json', 
+    await fetch(
+      `https://my-project-fdbf6.firebaseio.com/places/${id}.json`, 
         {
           method: 'PATCH',
           headers: {
@@ -117,11 +122,11 @@ export const updatePlace = (id, categoryId, title, imageUrl, location, openingHo
           openingHours
         })
       });
-
-      dispach({
+      dispatch({
         type: UPDATE_PLACE,
-        placeId: id,
+        //placeId: id,
         placeData: {
+          id: id,
           categoryId,
           title,
           imageUrl,

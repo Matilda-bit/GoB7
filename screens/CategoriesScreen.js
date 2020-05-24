@@ -14,7 +14,7 @@ import { CATEGORIES } from '../data/dummy-data';
 import Header from '../components/Header';
 import HeaderButton from '../components/UI/HeaderButton';
 import CategoryGridTile from '../components/CategoryGridTile';
-import * as placesActions from '../store/actions/places';
+//import * as placesActions from '../store/actions/places';
 //import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Colors  from '../constants/Colors';
 const CategoriesScreen = props => {
