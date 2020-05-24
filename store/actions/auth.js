@@ -19,7 +19,14 @@ export const signup = (email, password) => {
     );
 
     if (!response.ok) {
-      throw new Error('Something went wrong!');
+      const ErrorResData = await response.json();
+       //console.log(ErrorResData);
+      const errorId = ErrorResData.error.message;
+      let message = 'Something went wrong!';
+      if (errorId === 'EMAIL_EXISTS') {
+        message = 'This email exist already!';
+      } 
+      throw new Error(message);
     }
 
     const resData = await response.json();
