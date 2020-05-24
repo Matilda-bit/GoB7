@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useCallback } from 'react';
+import React, { useState, useEffect, useReducer, useCallback } from 'react';
 import { 
     View, 
     StyleSheet, 
@@ -62,6 +62,14 @@ const AuthScreen = props => {
         formIsValid: false
     });
 
+    useEffect(() => {
+        if (error) {
+            Alert.alert('An Error Occured!', error,[{text: 'Okay'}])
+        }
+    }, [
+        error
+    ]);
+
     const authHandler = async () => {
         let action;
         if (isSignup) {
@@ -75,8 +83,13 @@ const AuthScreen = props => {
             formState.inputValues.password
           );
         }
+        setError(null);
         setIsLoading(true);
-        await dispatch(action);
+        try {
+            await dispatch(action);
+        } catch (err) {
+            setError(err.message);
+        } 
         setIsLoading(false);
       };
 
