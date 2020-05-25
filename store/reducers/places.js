@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
         case SET_PLACES:
             return {
                 places: state.places.concat(action.places),
-                filteredPlaces: state.places.concat(action.places),
+                filteredPlaces: state.places,
                 userPlaces: action.places.filter(id => id.ownerId === 'u1'),
                 favoritePlaces: state.favoritePlaces
             };
