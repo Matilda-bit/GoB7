@@ -21,7 +21,7 @@ import Colors  from '../../constants/Colors';
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
 
 //add new place pop window after action
-//and after then navigate to myPlaces Screen => UserPlacesScreen
+//and after then navigate to myPlaces Screen
 const formReducer = (state, action) => {
     if (action.type === FORM_INPUT_UPDATE) {
       const updatedValues = {
@@ -50,6 +50,11 @@ const EditPlacesScreen = props => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
+  //to use img you need to selectedImage in submitHandler 
+  // also we need to add into action>places> => createPlace = (...image,   openingHours) => { ... UserPlacesScreen CREATE_PLACE, placeData: {..., image: image
+  // need to change data
+  // and into reducers>places> =>
+  const [selectedImage, setSelectedImage] = useState();
 
   const catId = props.navigation.getParam('categoryId');
   //console.log(catId);
@@ -59,6 +64,10 @@ const EditPlacesScreen = props => {
     state.places.userPlaces.find(prod => prod.id === id)
   );
   const dispatch = useDispatch();
+
+  const imageTakenHandler = imagePath => {
+    setSelectedImage(imagePath);
+};
 
   const [formState, dispatchFormState] = useReducer(formReducer, {
     inputValues: {
@@ -182,7 +191,7 @@ const EditPlacesScreen = props => {
             initiallyValid={!!editedPlace}
             required
           />
-          <ImagePicker />                                                                 
+          <ImagePicker onImageTaken={imageTakenHandler} />                                                                 
           <Input
             id="location"
             label="Location"
