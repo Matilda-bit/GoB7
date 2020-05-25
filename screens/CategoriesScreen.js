@@ -24,7 +24,7 @@ const CategoriesScreen = props => {
     // // console.log('userPlaces: ');
     // // console.log(userPlaces);
     // //send an action to router
-    // const dispatch = useDispatch();
+     const dispatch = useDispatch();
     
 
     // const loadPlaces = useCallback(async () => {

@@ -55,15 +55,17 @@ export const fetchPlaces = () => {
 
 export const deletePlace = id => {
   
-    return async dispatch => {
-      const response = await fetch (
-        `https://my-project-fdbf6.firebaseio.com/places/${id}.json`, {
-          method: 'DELETE'
-        }
-      );
+  return async (dispatch, getState) => {
+    const token = getState().auth.token;
+    console.log(getState());
+    const response = await fetch (
+      `https://my-project-fdbf6.firebaseio.com/places/${id}.json?auth=${token}`, {
+        method: 'DELETE'
+      }
+    );
 
       if (!response.ok) {
-        throw new Error('Something went wrong!');
+        throw new Error('Something went wrong! catch deletePlace');
       }
       dispatch({ type: DELETE_PLACE, id: id });
       };
@@ -71,10 +73,12 @@ export const deletePlace = id => {
   
 
   export const createPlace = (categoryId, title, imageUrl, location, openingHours) => {
-    return async dispatch => {
+    return async (dispatch, getState)  => {
       // any async code you want!
+      const token = getState().auth.token;
+      console.log(getState());
       const response = await fetch(
-        `https://my-project-fdbf6.firebaseio.com/places.json`, {
+        `https://my-project-fdbf6.firebaseio.com/places.json?auth=${token}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -87,9 +91,13 @@ export const deletePlace = id => {
           openingHours
         })
       });
+      
       //unpacked data
       const resData = await response.json();
       //console.log(resData);
+      if (!response.ok) {
+        throw new Error('Something went wrong! catch createPlace');
+      }
       
       dispatch({
         type: CREATE_PLACE,
@@ -108,10 +116,12 @@ export const deletePlace = id => {
 export const updatePlace = (id, categoryId, title, imageUrl, location, openingHours) => {
     console.log(id);
     console.log(title);
-  return async dispatch => {
-
+  return async (dispatch, getState) => {
+    //console.log (getState());
+    const token = getState().auth.token;
+    console.log(getState());
     const response = await fetch(
-      `https://my-project-fdbf6.firebaseio.com/places/${id}.json`, 
+      `https://my-project-fdbf6.firebaseio.com/places/${id}.json?auth=${token}`, 
         {
           method: 'PATCH',
           headers: {
@@ -125,9 +135,10 @@ export const updatePlace = (id, categoryId, title, imageUrl, location, openingHo
           openingHours
         })
       });
+   
 
       if (!response.ok) {
-        throw new Error('Something went wrong!');
+        throw new Error('Something went wrong! catch updatePlace');
       }
 
       dispatch({
@@ -154,7 +165,7 @@ export const toggleFavorite = (id) => {
     return async dispatch => {
       const date = new Date();
       const response = await fetch(
-          'https://my-project-fdbf6.firebaseio.com/favorite/u1.json',
+          'https://my-project-fdbf6.firebaseio.com/favorite/u1.json?',
           {
             method: 'POST',
             headers: {
@@ -168,7 +179,7 @@ export const toggleFavorite = (id) => {
         );
     
         if (!response.ok) {
-          throw new Error('Something went wrong!');
+          throw new Error('Something went wrong! catch toggleFavorite');
         }
     
         const resData = await response.json();

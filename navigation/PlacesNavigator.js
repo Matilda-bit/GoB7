@@ -160,6 +160,7 @@ const AdminNavigator = createStackNavigator(
         navigationOptions: {
             drawerLabel: "Admin"
         },
+        
         defaultNavigationOptions: defaultStackNavOptions
     }
 );
@@ -255,10 +256,11 @@ const AuthNavigator = createStackNavigator({
 }, {
     defaultNavigationOptions: defaultStackNavOptions
 });
+
 const MainNavigator = createSwitchNavigator({
     Auth: AuthNavigator,
-    Catalog: PlacesNavigator
-
+    Catalog: MenuMainNavigator, 
+    //defaultNavigationOptions: defaultStackNavOptions
 });
 
 export default createAppContainer(MainNavigator);

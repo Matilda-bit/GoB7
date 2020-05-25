@@ -10,11 +10,13 @@ import { Provider } from 'react-redux';
 
 import PlacesNavigator from './navigation/PlacesNavigator';
 import placesReducer from './store/reducers/places'
+import authReducer from './store/reducers/auth';
 
 enableScreens();
 
 const rootReducer = combineReducers({
-  places: placesReducer
+  places: placesReducer,
+  auth: authReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
