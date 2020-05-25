@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import HeaderButton from '../../components/UI/HeaderButton';
 import * as placesActions from '../../store/actions/places';
 import Input from '../../components/UI/Input';
+import ImagePicker from '../../components/UI/ImagePicker'
 
 import Colors  from '../../constants/Colors';
 
@@ -181,6 +182,7 @@ const EditPlacesScreen = props => {
             initiallyValid={!!editedPlace}
             required
           />
+          <ImagePicker />                                                                 
           <Input
             id="location"
             label="Location"
