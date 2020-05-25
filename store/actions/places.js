@@ -114,6 +114,10 @@ export const deletePlace = id => {
   };
 
 export const updatePlace = (id, categoryId, title, imageUrl, location, openingHours) => {
+  console.log('======================================================================================');
+  console.log('======================================================================================');  
+  console.log('======================================================================================');  
+  console.log('======================================================================================');
     console.log(id);
     console.log(title);
   return async (dispatch, getState) => {

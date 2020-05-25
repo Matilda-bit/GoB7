@@ -24,9 +24,11 @@ export default (state = initialState, action) => {
    switch (action.type){
         case SET_PLACES:
             return {
+                //places: state.places.concat(action.places.filter(id => action.places.id in state.places.id)),
                 places: state.places.concat(action.places),
                 filteredPlaces: state.places,
-                userPlaces: action.places.filter(id => id.ownerId === 'u1'),
+                //userPlaces: action.places.filter(id => id.ownerId === 'u1'),
+                userPlaces: action.places,
                 favoritePlaces: state.favoritePlaces
             };
        
@@ -45,7 +47,8 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 places: state.places.concat(newPlace),
-                filteredPlaces: state.places.concat(newPlace),
+                filteredPlaces: state.places,
+                //filteredPlaces: state.places.concat(newPlace),
                 userPlaces: state.userPlaces.concat(newPlace)
             };
         case UPDATE_PLACE:
@@ -77,12 +80,13 @@ export default (state = initialState, action) => {
             const updatedAvailablePlaces = [...state.places];
             updatedAvailablePlaces[availablePlaceIndex] = updatedPlace;
 
-            const updatedFilteredPlaces = [...state.filteredPlaces];
-            updatedFilteredPlaces[availablePlaceIndex] = updatedPlace;
-            return {
+            // const updatedFilteredPlaces = [...state.filteredPlaces];
+            // updatedFilteredPlaces[availablePlaceIndex] = updatedPlace;
+             return {
                 ...state,
                 places: updatedAvailablePlaces,
-                filteredPlaces: updatedFilteredPlaces,
+                filteredPlaces: state.places,
+                //filteredPlaces: updatedFilteredPlaces,
                 userPlaces: updatedUserPlaces
             };
 
