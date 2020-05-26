@@ -35,8 +35,6 @@ const UserPlacesScreen = props => {
       setIsLoading(false);
   }, [ dispatch, setIsLoading, setError]);
 
-
-   
     useEffect(() => {
         const willFocusSub = props.navigation.addListener(
           'willFocus',
@@ -54,6 +52,10 @@ const UserPlacesScreen = props => {
     
     const editPlaceHandler = id => {
       props.navigation.navigate('EditPlace', { placeId: id});
+    };
+
+    const addPlaceHandler = () => {
+      props.navigation.navigate({routeName: 'AddPlace'});
     };
 
     const deleteHandler = (id) => {
@@ -94,7 +96,9 @@ const UserPlacesScreen = props => {
           <Button
           color={Colors.primary}
           title="Add your new place"
-          onPress={() => {}}
+          onPress={() => {
+            addPlaceHandler();
+          }}
           />
           <Button
           color={Colors.accentColor}
