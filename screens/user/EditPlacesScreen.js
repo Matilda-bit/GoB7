@@ -128,7 +128,9 @@ const EditPlacesScreen = props => {
           )
         );
       }
-      props.navigation.goBack();
+      props.navigation.navigate('UserPlaces')
+      //props.navigation.goBack();
+
       } catch (err) {
         setError(err.message);
       }
