@@ -89,6 +89,19 @@ const UserPlacesScreen = props => {
   };
     
     return (
+      <View style={{flex:1, flexDirection: 'column'}}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgba(52, 52, 52, 0.0)' }}> 
+          <Button
+          color={Colors.primary}
+          title="Add your new place"
+          onPress={() => {}}
+          />
+          <Button
+          color={Colors.accentColor}
+          title="Switch to Catalog"
+          onPress={() => {}}
+          />
+        </View>
       <FlatList
           data={userPlaces}
           keyExtractor={(item,index) => item.id}
@@ -114,7 +127,10 @@ const UserPlacesScreen = props => {
                 />
             </ProductItem>
         )} 
-        />);
+        />
+        </View>
+        );
+        
 };
 
 
