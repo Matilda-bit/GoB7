@@ -24,7 +24,7 @@ const CategoryChoiceScreen = props => {
                 image={itemData.item.categoryImgUrl}
                 onSelect={() => {
                     props.navigation.navigate({ 
-                        routeName: 'Admin', 
+                        routeName: 'EditPlace', 
                         params: {
                             categoryId: itemData.item.id
                         } 
@@ -54,14 +54,15 @@ CategoryChoiceScreen.navigationOptions = (navData) =>{
         headerTitle: 'Choice category',
         headerRight: () => <Header />,
         //134
+        
         //burger menu
-        headerLeft: () =>
-            <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                <Item title="Menu" iconName='ios-menu' onPress={() => {
-                    navData.navigation.toggleDrawer();
-                    //navData.navigation.getParam('submit');
-                }} />
-            </HeaderButtons>
+        // headerLeft: () =>
+        //     <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        //         <Item title="Menu" iconName='ios-menu' onPress={() => {
+        //             navData.navigation.toggleDrawer();
+        //             //navData.navigation.getParam('submit');
+        //         }} />
+        //     </HeaderButtons>
     };
 };
 

@@ -140,79 +140,80 @@ const AppMenuNavigator = Platform.OS === 'android'
 //new addition 09.03.20
 const UserPlacesNavigator = createStackNavigator(
     {
-        UserPlaces: UserPlacesScreen,
-        EditPlace: EditPlacesScreen
+        UserPlaces: { screen: UserPlacesScreen },
+        EditPlace:  { screen: EditPlacesScreen },
+        AddPlace: { screen:  CategoryChoiceScreen},
     },
     {
         navigationOptions: {
-            drawerLabel: "UserPlaces"
+            drawerLabel: "My Places"
         },
         defaultNavigationOptions: defaultStackNavOptions
     }
 );
 
-const AdminNavigator = createStackNavigator(
-    {
-        screen: CategoryChoiceScreen,
-        Admin: EditPlacesScreen,
-    },
-    {
-        navigationOptions: {
-            drawerLabel: "Admin"
-        },
+// const AdminNavigator = createStackNavigator(
+//     {
+//         screen: CategoryChoiceScreen,
+//         Admin: EditPlacesScreen,
+//     },
+//     {
+//         navigationOptions: {
+//             drawerLabel: "Admin"
+//         },
         
-        defaultNavigationOptions: defaultStackNavOptions
-    }
-);
+//         defaultNavigationOptions: defaultStackNavOptions
+//     }
+// );
 // configure new tab in Admin
-const tabAdminScreenConfig = {
-    //add icons in my tab - list/edit
-    Place: { 
-        screen:  UserPlacesNavigator, 
-        navigationOptions: {
-            tabBarLabel: 'My Places',
-            tabBarIcon: (tabInfo) => {
-              return <Ionicons name='ios-list' size={25} color={tabInfo.tintColor}/>
-        },
-        tabBarColor: Colors.c1,
-        //for android style
-        tabBarLabel: Platform.OS === 'android' ? <BodyText style={{textAlign: 'center'}}>My Places</BodyText>:'List'
+// const tabAdminScreenConfig = {
+//     //add icons in my tab - list/edit
+//     Place: { 
+//         screen:  UserPlacesNavigator, 
+//         navigationOptions: {
+//             tabBarLabel: 'My Places',
+//             tabBarIcon: (tabInfo) => {
+//               return <Ionicons name='ios-list' size={25} color={tabInfo.tintColor}/>
+//         },
+//         tabBarColor: Colors.c1,
+//         //for android style
+//         tabBarLabel: Platform.OS === 'android' ? <BodyText style={{textAlign: 'center'}}>My Places</BodyText>:'List'
 
-    }},
-    Admin: {
-        screen: AdminNavigator, 
-        navigationOptions: {
-            tabBarLabel: 'add new Place',
-            tabBarIcon: (tabInfo) => {
-                return <Ionicons 
-                            name={Platform.OS === 'android' ? 'md-create' : 'ios-create'} 
-                            size={25} 
-                            color={tabInfo.tintColor}/>
-        },
-        tabBarColor: Colors.c1,
-        //for android style
-        tabBarLabel: Platform.OS === 'android' ? <BodyText style={{textAlign: 'center'}}>add new Place</BodyText> : 'favorite places'
-    }}
-};
+//     }},
+//     Admin: {
+//         screen: AdminNavigator, 
+//         navigationOptions: {
+//             tabBarLabel: 'add new Place',
+//             tabBarIcon: (tabInfo) => {
+//                 return <Ionicons 
+//                             name={Platform.OS === 'android' ? 'md-create' : 'ios-create'} 
+//                             size={25} 
+//                             color={tabInfo.tintColor}/>
+//         },
+//         tabBarColor: Colors.c1,
+//         //for android style
+//         tabBarLabel: Platform.OS === 'android' ? <BodyText style={{textAlign: 'center'}}>add new Place</BodyText> : 'favorite places'
+//     }}
+// };
 
-const AdminTabNavigator = Platform.OS === 'android'
-?createBottomTabNavigator( tabAdminScreenConfig, {
-    tabBarOptions: {
-        activeTintColor: Colors.accentColor,
-        shifting: true,
-        barStyle: {
-            backgroundColor: Colors.primaryColor
-        }
-    }
-})
-: createBottomTabNavigator( tabAdminScreenConfig, {
-   tabBarComponent: {
-       labelStyle: {
-           fontFamily: 'open-sans-lato'
-       },
-       activeTintColor: Colors.accent
-   } 
-});
+// const AdminTabNavigator = Platform.OS === 'android'
+// ? createBottomTabNavigator( tabAdminScreenConfig, {
+//     tabBarOptions: {
+//         activeTintColor: Colors.accentColor,
+//         shifting: true,
+//         barStyle: {
+//             backgroundColor: Colors.primaryColor
+//         }
+//     }
+// })
+// : createBottomTabNavigator( tabAdminScreenConfig, {
+//    tabBarComponent: {
+//        labelStyle: {
+//            fontFamily: 'open-sans-lato'
+//        },
+//        activeTintColor: Colors.accent
+//    } 
+// });
 
 
 //134
@@ -236,7 +237,7 @@ const MenuMainNavigator = createDrawerNavigator({
         }
     },
     Filters: FilterNavigator,
-    Admin: AdminTabNavigator,
+    Admin: UserPlacesNavigator
     },
     //my styles for text into burger
     {
