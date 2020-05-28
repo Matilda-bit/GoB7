@@ -6,7 +6,7 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/UI/HeaderButton";
 import WhiteBodyText from "../components/text/WhiteBodyText";
 import Screenbk from "../constants/default-styles";
-import { toggleFavorite } from "../store/actions/catalog";
+import { toggleFavorite } from "../store/actions/places";
 
 const PlaceDetailScreen = (props) => {
   const availablePlaces = useSelector((state) => state.places.places);

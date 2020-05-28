@@ -1,31 +1,31 @@
-export const SIGNUP = 'SIGNUP';
-export const LOGIN = 'LOGIN';
+export const SIGNUP = "SIGNUP";
+export const LOGIN = "LOGIN";
 
 export const signup = (email, password) => {
-  return async dispatch => {
+  return async (dispatch) => {
     const response = await fetch(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyClLKIzrthQs2kTpz4B0u1RhCHJHEKkbuw',
+      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyClLKIzrthQs2kTpz4B0u1RhCHJHEKkbuw",
       {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: email,
           password: password,
-          returnSecureToken: true
-        })
+          returnSecureToken: true,
+        }),
       }
     );
 
     if (!response.ok) {
       const ErrorResData = await response.json();
-       //console.log(ErrorResData);
+      //console.log(ErrorResData);
       const errorId = ErrorResData.error.message;
-      let message = 'Something went wrong!';
-      if (errorId === 'EMAIL_EXISTS') {
-        message = 'This email exist already!';
-      } 
+      let message = "Something went wrong!";
+      if (errorId === "EMAIL_EXISTS") {
+        message = "This email exist already!";
+      }
       throw new Error(message);
     }
 
@@ -36,31 +36,31 @@ export const signup = (email, password) => {
 };
 
 export const login = (email, password) => {
-  return async dispatch => {
+  return async (dispatch) => {
     const response = await fetch(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyClLKIzrthQs2kTpz4B0u1RhCHJHEKkbuw',
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyClLKIzrthQs2kTpz4B0u1RhCHJHEKkbuw",
       {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: email,
           password: password,
-          returnSecureToken: true
-        })
+          returnSecureToken: true,
+        }),
       }
     );
 
     if (!response.ok) {
       const ErrorResData = await response.json();
-       //console.log(ErrorResData);
+      //console.log(ErrorResData);
       const errorId = ErrorResData.error.message;
-      let message = 'Something went wrong!';
-      if (errorId === 'EMAIL_NOT_FOUND') {
-        message = 'This email could not be found!';
-      } else if (errorId === 'INVALID_PASSWORD') {
-        message = 'This password is not valid!';
+      let message = "Something went wrong!";
+      if (errorId === "EMAIL_NOT_FOUND") {
+        message = "This email could not be found!";
+      } else if (errorId === "INVALID_PASSWORD") {
+        message = "This password is not valid!";
       }
       throw new Error(message);
     }
