@@ -4,38 +4,22 @@ import {
     StyleSheet,
     Text, 
 } from 'react-native';
+
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-
-//import { MapView, Permissions } from 'expo';
-
 import HeaderButton from '../components/UI/HeaderButton';
 import Header from '../components/Header';
 
+import MapView from 'react-native-maps';
+
 const MapScreen = props => {
- //   const myMap;
-    return (
-        <View>
-            <Text>Maps</Text>
-        
-            <View style={styles.screen}>
-               
-            </View>
-        </View>  
-    );
+    const mapRegion = {
+        latitude: 31.2530,
+        longitude: 34.7915,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+      };
+      return <MapView style={styles.map} region={mapRegion} />;
 };
-
-// MapScreen.navigationOption = (navData) =>{
-//     return {
-//         headerTitle: 'Maps',
-//         headerLeft: 
-//             <HeaderButtons HeaderButtonComponent={HeaderButton}>
-//                 <Item title="Menu" iconName='ios-menu' onPress={() => {
-//                     navData.navigation.toggleDrawer();
-//                 }} />
-//             </HeaderButtons>
-//     };
-
-// };
 
 MapScreen.navigationOptions = (navData) =>{
     return {
@@ -52,12 +36,10 @@ MapScreen.navigationOptions = (navData) =>{
     };
 };
 
-const styles= StyleSheet.create ({
-   screen: {
-       flex: 1,
-       padding: 10,
-       alignItems: 'center'
-   } 
-});
+const styles = StyleSheet.create({
+    map: {
+      flex: 1
+    }
+  });
 
 export default MapScreen;
