@@ -50,26 +50,26 @@
 //         }
 // }
 class Place {
-    constructor(
-        id,
-        categoryId,
-        ownerId,
-        title,
-        imageUrl,
-        location,
-        openingHours,
-        isOpenShabbath,
-        isOpenNow
-        ) {
-            this.id = id;
-            this.categoryId = categoryId;
-            this.ownerId = ownerId;
-            this.title = title;
-            this.imageUrl = imageUrl;
-            this.location = location;
-            this.openingHours = openingHours;
-            this.isOpenShabbath = isOpenShabbath;
-            this.isOpenNow = isOpenNow;
-        }
+  constructor(
+    id,
+    categoryId,
+    ownerId,
+    title,
+    imageUrl,
+    location,
+    openingHours,
+    isOpenShabbath,
+    isOpenNow
+  ) {
+    this.id = id;
+    this.categoryId = categoryId;
+    this.ownerId = ownerId;
+    this.title = title;
+    this.imageUrl = imageUrl;
+    this.location = location;
+    this.openingHours = openingHours;
+    this.isOpenShabbath = isOpenShabbath;
+    this.isOpenNow = isOpenNow;
+  }
 }
 export default Place;
