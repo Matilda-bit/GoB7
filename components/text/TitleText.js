@@ -1,14 +1,16 @@
-import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import React from "react";
+import { Text, StyleSheet } from "react-native";
 
-const TitleText = props => <Text style={{ ...styles.title, ...props.style }}>{props.children}</Text>;
+const TitleText = (props) => (
+  <Text style={{ ...styles.title, ...props.style }}>{props.children}</Text>
+);
 
 const styles = StyleSheet.create({
-    title: {
-        fontFamily: 'open-sans-title',
-        fontSize: 50,
-        color: '#343434'
-    }
+  title: {
+    fontFamily: "open-sans-title",
+    fontSize: 50,
+    color: "#343434",
+  },
 });
 
 export default TitleText;

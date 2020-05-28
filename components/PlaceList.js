@@ -12,6 +12,7 @@ const PlaceList = (props) => {
     const isFavorite = favoritePlaces.some(
       (place) => place.id === itemData.item.id
     );
+
     return (
       <MyItem
         title={itemData.item.title}
