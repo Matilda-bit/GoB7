@@ -5,6 +5,7 @@ import {
   FlatList,
   ActivityIndicator,
   Button,
+  Text,
   Platform,
   Alert,
 } from "react-native";
@@ -56,7 +57,6 @@ const UserPlacesScreen = (props) => {
   };
 
   const addPlaceHandler = () => {
-    console.log("I`m here!!!");
     props.navigation.navigate("AddPlace");
   };
 
@@ -96,6 +96,27 @@ const UserPlacesScreen = (props) => {
   if ((userPlaces.length === 0 || userPlaces === null) && !isLoading) {
     return (
       <View style={styles.content}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            backgroundColor: "rgba(52, 52, 52, 0.0)",
+          }}
+        >
+          <Button
+            color={Colors.primary}
+            title="Add your new place"
+            onPress={() => {
+              addPlaceHandler();
+            }}
+          />
+          <Button
+            color={Colors.accentColor}
+            title="Switch to Catalog"
+            onPress={() => {}}
+          />
+        </View>
         <BodyText>No data found, maybe you want to add your place?</BodyText>
       </View>
     );
