@@ -1,7 +1,7 @@
 import Place from "../../models/place";
 //my actions
-// export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE';
-// export const SET_FILTERS = 'SET_FILTERS';
+export const TOGGLE_FAVORITE = "TOGGLE_FAVORITE";
+export const SET_FILTERS = "SET_FILTERS";
 //admin zone
 export const DELETE_PLACE = "DELETE_PLACE";
 export const CREATE_PLACE = "CREATE_PLACE";
@@ -10,13 +10,11 @@ export const UPDATE_PLACE = "UPDATE_PLACE";
 export const SET_PLACES = "SET_PLACES";
 
 export const fetchPlaces = () => {
-  return async (dispatch) => {
-    // any async code you want!
-    //method: 'GET',
-    //don't need 'header' and 'body' anymore
+  return async (dispatch, getState) => {
+    const userId = getState().auth.userId;
     try {
       const response = await fetch(
-        "https://my-project-fdbf6.firebaseio.com/places.json"
+        `https://my-project-fdbf6.firebaseio.com/places/UserPlaces/${userId}.json`
       );
 
       //
@@ -33,7 +31,7 @@ export const fetchPlaces = () => {
           new Place(
             key,
             resData[key].categoryId,
-            "u1",
+            resData[key].ownerId,
             resData[key].title,
             resData[key].imageUrl,
             resData[key].location,
@@ -43,8 +41,12 @@ export const fetchPlaces = () => {
           )
         );
       }
-      //console.log(resData);
-      dispatch({ type: SET_PLACES, places: loadedPlaces });
+      //console.log(loadedPlaces);
+      dispatch({
+        type: SET_PLACES,
+        places: loadedPlaces,
+        userPlaces: loadedPlaces.filter((prop) => prop.ownerId == userId),
+      });
     } catch (err) {
       // can to add - send to custom analytics server
       throw err;
@@ -55,9 +57,9 @@ export const fetchPlaces = () => {
 export const deletePlace = (id) => {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
-    console.log(getState());
+    const userId = getState().auth.userId;
     const response = await fetch(
-      `https://my-project-fdbf6.firebaseio.com/places/${id}.json?auth=${token}`,
+      `https://my-project-fdbf6.firebaseio.com/places/UserPlaces/${userId}.json?auth=${token}`,
       {
         method: "DELETE",
       }
@@ -80,9 +82,9 @@ export const createPlace = (
   return async (dispatch, getState) => {
     // any async code you want!
     const token = getState().auth.token;
-    console.log(getState());
+    const userId = getState().auth.userId;
     const response = await fetch(
-      `https://my-project-fdbf6.firebaseio.com/places.json?auth=${token}`,
+      `https://my-project-fdbf6.firebaseio.com/places/UserPlaces/${userId}.json?auth=${token}`,
       {
         method: "POST",
         headers: {
@@ -94,6 +96,7 @@ export const createPlace = (
           imageUrl,
           location,
           openingHours,
+          ownerId: userId,
         }),
       }
     );
@@ -114,6 +117,7 @@ export const createPlace = (
         imageUrl,
         location,
         openingHours,
+        ownerId: userId,
       },
     });
   };
@@ -127,26 +131,12 @@ export const updatePlace = (
   location,
   openingHours
 ) => {
-  console.log(
-    "======================================================================================"
-  );
-  console.log(
-    "======================================================================================"
-  );
-  console.log(
-    "======================================================================================"
-  );
-  console.log(
-    "======================================================================================"
-  );
-  console.log(id);
-  console.log(title);
   return async (dispatch, getState) => {
-    //console.log (getState());
     const token = getState().auth.token;
-    console.log(getState());
+    //console.log(getState());
+    const userId = getState().auth.userId;
     const response = await fetch(
-      `https://my-project-fdbf6.firebaseio.com/places/${id}.json?auth=${token}`,
+      `https://my-project-fdbf6.firebaseio.com/places/UserPlaces/${userId}/${id}.json?auth=${token}`,
       {
         method: "PATCH",
         headers: {
@@ -158,6 +148,7 @@ export const updatePlace = (
           imageUrl,
           location,
           openingHours,
+          ownerId: userId,
         }),
       }
     );
@@ -168,7 +159,6 @@ export const updatePlace = (
 
     dispatch({
       type: UPDATE_PLACE,
-      //placeId: id,
       placeData: {
         id: id,
         categoryId,
@@ -181,43 +171,39 @@ export const updatePlace = (
   };
 };
 
-// export const toggleFavorite = (id) => {
-//     return {type: TOGGLE_FAVORITE, placeId: id};
-// };
+export const toggleFavorite = (id) => {
+  return async (dispatch) => {
+    const date = new Date();
+    const response = await fetch(
+      "https://my-project-fdbf6.firebaseio.com/favorite/u1.json?",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+          date: date.toISOString(),
+        }),
+      }
+    );
 
-// export const toggleFavorite = (id) => {
-//     return async dispatch => {
-//       const date = new Date();
-//       const response = await fetch(
-//           'https://my-project-fdbf6.firebaseio.com/favorite/u1.json?',
-//           {
-//             method: 'POST',
-//             headers: {
-//               'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify({
-//               id,
-//               date: date.toISOString()
-//             })
-//           }
-//         );
+    if (!response.ok) {
+      throw new Error("Something went wrong! catch toggleFavorite");
+    }
 
-//         if (!response.ok) {
-//           throw new Error('Something went wrong! catch toggleFavorite');
-//         }
+    const resData = await response.json();
 
-//         const resData = await response.json();
+    dispatch({
+      type: TOGGLE_FAVORITE,
+      placeId: id,
+      orderData: {
+        id: resData.name,
+      },
+    });
+  };
+};
 
-//     dispatch({
-//       type: TOGGLE_FAVORITE,
-//       placeId: id,
-//       orderData: {
-//       id: resData.name
-//       }
-//     });
-//   };
-// };
-
-// export const setFilters = filterSettings => {
-//     return {type: SET_FILTERS, filters: filterSettings};
-// };
+export const setFilters = (filterSettings) => {
+  return { type: SET_FILTERS, filters: filterSettings };
+};
