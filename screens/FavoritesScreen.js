@@ -8,7 +8,7 @@ import PlaceList from "../components/PlaceList";
 import Header from "../components/Header";
 import BodyText from "../components/text/BodyText";
 const FavoritesScreen = (props) => {
-  const favPlaces = useSelector((state) => state.catalog.favoritePlaces);
+  const favPlaces = useSelector((state) => state.places.favoritePlaces);
 
   if (favPlaces.length === 0 || !favPlaces) {
     return (
