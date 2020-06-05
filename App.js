@@ -8,7 +8,7 @@ import { enableScreens } from "react-native-screens";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 
-import PlacesNavigator from "./navigation/PlacesNavigator";
+import NavigationContainer from "./navigation/NavigationContainer";
 import placesReducer from "./store/reducers/places";
 import authReducer from "./store/reducers/auth";
 
@@ -47,7 +47,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <PlacesNavigator />
+      <NavigationContainer />
     </Provider>
   );
 }
