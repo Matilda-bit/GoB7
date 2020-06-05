@@ -11,14 +11,14 @@ import {
 } from "react-native";
 
 const CategoryGridTile = (props) => {
-  let TouchableCmp = TouchableOpacity;
+  //let TouchableCmp = TouchableOpacity;
   //console.log(props.color);
-  if (Platform.OS === "android" && Platform.Version >= 21) {
-    TouchableCmp = TouchableNativeFeedback;
-  }
+  // if (Platform.OS === "android" && Platform.Version >= 21) {
+  //   TouchableCmp = TouchableNativeFeedback;
+  // }
   return (
     <View style={styles.gridItem}>
-      <TouchableCmp style={{ flex: 1 }} onPress={props.onSelect}>
+      <TouchableOpacity onPress={props.onSelect}>
         <View>
           <ImageBackground source={{ uri: props.image }} style={styles.bgImage}>
             <Text style={styles.title} numberOfLines={2}>
@@ -26,32 +26,39 @@ const CategoryGridTile = (props) => {
             </Text>
           </ImageBackground>
         </View>
-      </TouchableCmp>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   gridItem: {
-    flex: 1,
-    margin: 10,
+    //flex: 1,
+    //margin: 10,
     height: 165,
+    width: 165,
     borderRadius: 25,
+    overflow: "hidden",
+    margin: 10,
     borderColor: "black",
-    borderWidth: 1,
-    overflow:
-      Platform.OS === "android" && Platform.Version >= 21
-        ? "hidden"
-        : "visible",
+    borderWidth: 0.8,
+    //alignItems: "center",
+    // overflow:
+    //   Platform.OS === "android" && Platform.Version >= 21
+    //     ? "hidden"
+    //     : "visible",
+
     elevation: 5,
   },
+
   container: {
     flex: 1,
     shadowColor: "black",
     shadowOpacity: 0.32,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 25,
-    justifyContent: "flex-start",
+    //justifyContent: "flex-start",
+    justifyContent: "space-around",
     alignItems: "center",
   },
   title: {
