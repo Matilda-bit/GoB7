@@ -1,12 +1,16 @@
 import React from "react";
-import { Platform } from "react-native";
+import { Platform, SafeAreaView, Button, View } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
-import { createDrawerNavigator } from "react-navigation-drawer";
+import {
+  createDrawerNavigator,
+  DrawerNavigatorItems,
+} from "react-navigation-drawer";
 
 import { Ionicons } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
 
 import CategoriesScreen from "../screens/CategoriesScreen";
 import CategoryPlaceScreen from "../screens/CategoryPlaceScreen";
@@ -18,10 +22,13 @@ import CategoryChoiceScreen from "../screens/user/CategoryChoiceScreen";
 import EditPlacesScreen from "../screens/user/EditPlacesScreen";
 import UserPlacesScreen from "../screens/user/UserPlacesScreen";
 import MapScreen from "../screens/MapScreen";
-import BodyText from "../components/text/BodyText";
-import Colors from "../constants/Colors";
 import AuthScreen from "../screens/user/AuthScreen";
 import StartupScreen from "../screens/StartupScreen";
+
+import * as authActions from "../store/actions/auth";
+
+import BodyText from "../components/text/BodyText";
+import Colors from "../constants/Colors";
 
 //header style
 const defaultStackNavOptions = {
@@ -283,6 +290,24 @@ const MenuMainNavigator = createDrawerNavigator(
       labelStyle: {
         fontFamily: "open-sans-bold",
       },
+    },
+    contentComponent: (props) => {
+      const dispatch = useDispatch();
+      return (
+        <View style={{ flex: 1, paddingTop: 20 }}>
+          <SafeAreaView forceInset={{ top: "always", horizontal: "never" }}>
+            <DrawerNavigatorItems {...props} />
+            <Button
+              title="Logout"
+              color={Colors.primary}
+              onPress={() => {
+                dispatch(authActions.logout());
+                props.navigation.navigate("Auth");
+              }}
+            />
+          </SafeAreaView>
+        </View>
+      );
     },
   }
 );
