@@ -21,6 +21,7 @@ import MapScreen from "../screens/MapScreen";
 import BodyText from "../components/text/BodyText";
 import Colors from "../constants/Colors";
 import AuthScreen from "../screens/user/AuthScreen";
+import StartupScreen from "../screens/StartupScreen";
 
 //header style
 const defaultStackNavOptions = {
@@ -297,6 +298,7 @@ const AuthNavigator = createStackNavigator(
 );
 
 const MainNavigator = createSwitchNavigator({
+  Startup: StartupScreen,
   Auth: AuthNavigator,
   Catalog: MenuMainNavigator,
   //defaultNavigationOptions: defaultStackNavOptions
