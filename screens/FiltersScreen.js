@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import HeaderButton from "../components/UI/HeaderButton";
 import Header from "../components/Header";
 import Colors from "../constants/Colors";
-import { setFilters } from "../store/actions/catalog";
+import { setFilters } from "../store/actions/places";
 
 const FilterSwitch = (props) => {
   return (
