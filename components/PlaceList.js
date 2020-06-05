@@ -5,7 +5,7 @@ import Screenbk from "../constants/default-styles";
 import { useSelector } from "react-redux";
 
 const PlaceList = (props) => {
-  const favoritePlaces = useSelector((state) => state.catalog.favoritePlaces);
+  const favoritePlaces = useSelector((state) => state.places.favoritePlaces);
 
   //data for my FlatList in renderItem
   const renderMyItem = (itemData) => {
