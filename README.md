@@ -2,8 +2,8 @@
 
 #### GO B7  - It is my graduate work.
 
-An information app with a convenient interface for viewing various services in Be'er Sheva from different categories,
-Such as 
+An information app with a convenient interface for viewing various services in Be'er Sheva(Israel) from different categories,
+such as 
  - [x] bars, 
  - [x] restaurants, 
  - [x] food, 
